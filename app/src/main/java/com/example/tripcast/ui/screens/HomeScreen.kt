@@ -1,0 +1,271 @@
+package com.example.tripcast.ui.screens
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.example.tripcast.R
+import com.example.tripcast.model.Trip
+
+@Composable
+fun HomeScreen(
+    onNavigateToCalendar: () -> Unit
+) {
+    val trips = listOf(
+        Trip(
+            startDate = "2025-06-01",
+            endDate = "2025-06-05",
+            location = "Seoul",
+            weather = "Sunny",
+            temperature = "26°C",
+            UV = "High",
+            airQuality = "Moderate"
+        ),
+        Trip(
+            startDate = "2025-07-10",
+            endDate = "2025-07-15",
+            location = "Tokyo",
+            weather = "Rainy",
+            temperature = "22°C",
+            UV = "Low",
+            airQuality = "Good"
+        ),
+        Trip(
+            startDate = "2025-08-01",
+            endDate = "2025-08-07",
+            location = "Paris",
+            weather = "Cloudy",
+            temperature = "24°C",
+            UV = "Medium",
+            airQuality = "Moderate"
+        ),
+        Trip(
+            startDate = "2025-09-05",
+            endDate = "2025-09-10",
+            location = "New York",
+            weather = "Sunny",
+            temperature = "28°C",
+            UV = "High",
+            airQuality = "Poor"
+        ),
+
+    )
+    
+    val recommendedTrips = listOf(
+        Trip(
+            startDate = "2025-10-12",
+            endDate = "2025-10-16",
+            location = "Sydney",
+            weather = "Windy",
+            temperature = "19°C",
+            UV = "Medium",
+            airQuality = "Good"
+        ),
+        Trip(
+            startDate = "2025-11-20",
+            endDate = "2025-11-25",
+            location = "London",
+            weather = "Foggy",
+            temperature = "10°C",
+            UV = "Low",
+            airQuality = "Unhealthy"
+        )
+    )
+
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
+        item {
+            Text(
+                text = "Trip Cast",
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(200.dp),
+                shape = RoundedCornerShape(12.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box {
+                    Image(
+                        painter = painterResource(id = R.drawable.palmer),
+                        contentDescription = "City Aerial View",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = "My Trips",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                text = "Plan your trips based on weather",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
+        // 내 일정들
+        items(trips) { trip ->
+            TripItem(trip = trip)
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+
+        item {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(120.dp),
+                shape = RoundedCornerShape(12.dp),
+                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+            ) {
+                Box {
+                    Image(
+                        painter = painterResource(id = R.drawable.gusto),
+                        contentDescription = "Travel Gear",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = ContentScale.Crop
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = "Recommended Trips",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold
+            )
+
+            Text(
+                text = "Based on your favorite activities",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+        }
+
+        // 사용자 추천 여행지들
+        items(recommendedTrips) { trip ->
+            RecommendedTripItem(trip = trip)
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
+
+@Composable
+fun TripItem(trip: Trip) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(8.dp)
+                .background(MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(4.dp))
+        )
+        
+        Spacer(modifier = Modifier.width(8.dp))
+        
+        Column {
+            Text(
+                text = trip.weather,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+            )
+            
+            Text(
+                text = "${trip.location}",
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.SemiBold
+            )
+            
+            Text(
+                text = "${trip.startDate}, ${trip.endDate}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+            )
+        }
+    }
+}
+
+@Composable
+fun RecommendedTripItem(trip: Trip) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(8.dp)
+                .background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(4.dp))
+        )
+        
+        Spacer(modifier = Modifier.width(8.dp))
+        
+        Column {
+            Text(
+                text = trip.weather,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+            )
+            
+            Text(
+                text = trip.location,
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.SemiBold
+            )
+            
+            Text(
+                text = trip.location,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+            )
+        }
+    }
+}
+
+@Preview
+@Composable
+private fun HomeScreenPrev() {
+    HomeScreen {  }
+}
