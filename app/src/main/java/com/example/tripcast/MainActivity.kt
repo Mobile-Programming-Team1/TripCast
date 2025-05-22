@@ -22,14 +22,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+
 import androidx.core.content.ContextCompat
+
+import androidx.lifecycle.viewmodel.compose.viewModel
+
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.tripcast.ui.components.BottomNavBar
-import com.example.tripcast.ui.screens.*
+import com.example.tripcast.ui.screens.CalendarScreen
+import com.example.tripcast.ui.screens.CheckOverallScreen
+import com.example.tripcast.ui.screens.HomeScreen
+import com.example.tripcast.ui.screens.SearchDestinationScreen
+import com.example.tripcast.ui.screens.SelectDatesScreen
+import com.example.tripcast.ui.screens.SettingScreen
 import com.example.tripcast.ui.theme.tripcastTheme
+import com.example.tripcast.viewmodel.MyTripViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -82,6 +92,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TripcastApp() {
     val navController = rememberNavController()
+    var myTripViewModel : MyTripViewModel = viewModel()
 
     Scaffold(
         bottomBar = {
@@ -114,29 +125,40 @@ fun TripcastApp() {
             modifier = Modifier.padding(paddingValues)
         ) {
             composable("home") {
-                HomeScreen(onNavigateToCalendar = { navController.navigate("calendar") })
+                HomeScreen(
+                    viewModel = myTripViewModel,
+                    onNavigateToCalendar = { navController.navigate("calendar") }
+                )
             }
             composable("calendar") {
-                CalendarScreen(onNavigateToSearch = { navController.navigate("search") })
+                CalendarScreen(
+                    viewModel = myTripViewModel,
+                    onNavigateToSearch = { navController.navigate("search") }
+                )
             }
             composable("setting") {
                 SettingScreen()
             }
-                composable("search") {
+
+            composable("search") {
+
                 SearchDestinationScreen(
-//                    onNavigateToSelectDates = { navController.navigate("select_dates") }
+                    viewModel = myTripViewModel,
+                    onNavigateToSelectDates = {navController.navigate("select_dates") }
                 )
             }
-//            composable("select_dates") {
-//                SelectDatesScreen(
-//                    onNavigateToCheckWeather = { navController.navigate("check_weather") }
-//                )
-//            }
-//            composable("check_weather") {
-//                CheckWeatherScreen(
-//                    onNavigateToPreferences = { navController.navigate("preferences") }
-//                )
-//            }
+            composable("select_dates") {
+                SelectDatesScreen(
+                    viewModel = myTripViewModel,
+                    onNavigateToCheckOverall = { navController.navigate("check_overall") }
+                )
+            }
+            composable("check_overall") {
+                CheckOverallScreen(
+                    viewModel = myTripViewModel,
+                    onNavigateToPreferences = { navController.navigate("home") }
+                )
+            }
 //            composable("preferences") {
 //                WeatherPreferencesScreen(
 //                    onGetRecommendations = { /* Handle recommendations */ }

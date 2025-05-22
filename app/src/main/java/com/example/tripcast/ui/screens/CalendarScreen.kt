@@ -15,13 +15,13 @@ import com.example.tripcast.ui.components.CalendarView
 import com.example.tripcast.util.CalendarUtil
 import java.time.LocalDate
 import java.util.*
+import com.example.tripcast.viewmodel.MyTripViewModel
 
 @Composable
-fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit) {
+fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit, viewModel: MyTripViewModel) {
     val context = LocalContext.current
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
-
-    LazyColumn(
+    LazyColumn (
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
