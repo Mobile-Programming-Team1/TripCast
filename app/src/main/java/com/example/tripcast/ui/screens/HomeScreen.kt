@@ -24,75 +24,75 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tripcast.R
 import com.example.tripcast.model.Trip
+import com.example.tripcast.viewmodel.MyTripViewModel
 
 @Composable
 fun HomeScreen(
-    onNavigateToCalendar: () -> Unit
+    onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
 ) {
-    val trips = listOf(
-        Trip(
-            startDate = "2025-06-01",
-            endDate = "2025-06-05",
-            location = "Seoul",
-            weather = "Sunny",
-            temperature = "26°C",
-            UV = "High",
-            airQuality = "Moderate"
-        ),
-        Trip(
-            startDate = "2025-07-10",
-            endDate = "2025-07-15",
-            location = "Tokyo",
-            weather = "Rainy",
-            temperature = "22°C",
-            UV = "Low",
-            airQuality = "Good"
-        ),
-        Trip(
-            startDate = "2025-08-01",
-            endDate = "2025-08-07",
-            location = "Paris",
-            weather = "Cloudy",
-            temperature = "24°C",
-            UV = "Medium",
-            airQuality = "Moderate"
-        ),
-        Trip(
-            startDate = "2025-09-05",
-            endDate = "2025-09-10",
-            location = "New York",
-            weather = "Sunny",
-            temperature = "28°C",
-            UV = "High",
-            airQuality = "Poor"
-        ),
-
-    )
-    
-    val recommendedTrips = listOf(
-        Trip(
-            startDate = "2025-10-12",
-            endDate = "2025-10-16",
-            location = "Sydney",
-            weather = "Windy",
-            temperature = "19°C",
-            UV = "Medium",
-            airQuality = "Good"
-        ),
-        Trip(
-            startDate = "2025-11-20",
-            endDate = "2025-11-25",
-            location = "London",
-            weather = "Foggy",
-            temperature = "10°C",
-            UV = "Low",
-            airQuality = "Unhealthy"
-        )
-    )
+//    val trips = listOf(
+//        Trip(
+//            startDate = "2025-06-01",
+//            endDate = "2025-06-05",
+//            location = "Seoul",
+//            weather = "Sunny",
+//            temperature = "26°C",
+//            UV = "High",
+//            airQuality = "Moderate"
+//        ),
+//        Trip(
+//            startDate = "2025-07-10",
+//            endDate = "2025-07-15",
+//            location = "Tokyo",
+//            weather = "Rainy",
+//            temperature = "22°C",
+//            UV = "Low",
+//            airQuality = "Good"
+//        ),
+//        Trip(
+//            startDate = "2025-08-01",
+//            endDate = "2025-08-07",
+//            location = "Paris",
+//            weather = "Cloudy",
+//            temperature = "24°C",
+//            UV = "Medium",
+//            airQuality = "Moderate"
+//        ),
+//        Trip(
+//            startDate = "2025-09-05",
+//            endDate = "2025-09-10",
+//            location = "New York",
+//            weather = "Sunny",
+//            temperature = "28°C",
+//            UV = "High",
+//            airQuality = "Poor"
+//        ),
+//
+//    )
+//
+//    val recommendedTrips = listOf(
+//        Trip(
+//            startDate = "2025-10-12",
+//            endDate = "2025-10-16",
+//            location = "Sydney",
+//            weather = "Windy",
+//            temperature = "19°C",
+//            UV = "Medium",
+//            airQuality = "Good"
+//        ),
+//        Trip(
+//            startDate = "2025-11-20",
+//            endDate = "2025-11-25",
+//            location = "London",
+//            weather = "Foggy",
+//            temperature = "10°C",
+//            UV = "Low",
+//            airQuality = "Unhealthy"
+//        )
+//    )
 
     LazyColumn(
         modifier = Modifier
@@ -139,7 +139,7 @@ fun HomeScreen(
             )
         }
         // 내 일정들
-        items(trips) { trip ->
+        items(viewModel.myTripList) { trip ->
             TripItem(trip = trip)
             Spacer(modifier = Modifier.height(8.dp))
         }
@@ -181,10 +181,10 @@ fun HomeScreen(
         }
 
         // 사용자 추천 여행지들
-        items(recommendedTrips) { trip ->
-            RecommendedTripItem(trip = trip)
-            Spacer(modifier = Modifier.height(8.dp))
-        }
+//        items(recommendedTrips) { trip ->
+//            RecommendedTripItem(trip = trip)
+//            Spacer(modifier = Modifier.height(8.dp))
+//        }
     }
 }
 
@@ -218,7 +218,7 @@ fun TripItem(trip: Trip) {
             )
             
             Text(
-                text = "${trip.startDate}, ${trip.endDate}",
+                text = "${trip.startDate} ~ ${trip.endDate}",
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
@@ -262,10 +262,4 @@ fun RecommendedTripItem(trip: Trip) {
             )
         }
     }
-}
-
-@Preview
-@Composable
-private fun HomeScreenPrev() {
-    HomeScreen {  }
 }
