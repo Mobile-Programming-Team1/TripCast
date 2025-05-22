@@ -10,9 +10,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.tripcast.ui.components.CalendarView
+import com.example.tripcast.viewmodel.MyTripViewModel
 
 @Composable
-fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit) {
+fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit, viewModel: MyTripViewModel) {
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()
