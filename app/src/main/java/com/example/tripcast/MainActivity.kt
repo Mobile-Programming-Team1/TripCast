@@ -8,9 +8,13 @@ package com.example.tripcast
 //import com.example.tripcast.ui.screens.WeatherPreferencesScreen
 //import com.example.tripcast.ui.theme.tripcastTheme
 //import com.example.tripcast.ui.screens.ExploreScreen
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
@@ -18,7 +22,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+
+import androidx.core.content.ContextCompat
+
 import androidx.lifecycle.viewmodel.compose.viewModel
+
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -34,23 +42,55 @@ import com.example.tripcast.ui.theme.tripcastTheme
 import com.example.tripcast.viewmodel.MyTripViewModel
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        requestCalendarPermissions()
+
         setContent {
             tripcastTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    tripcastApp()
+                    TripcastApp()
                 }
             }
+        }
+    }
+
+    // ✅ 최신 방식 권한 요청 코드
+    private fun requestCalendarPermissions() {
+        val permissions = arrayOf(
+            Manifest.permission.READ_CALENDAR,
+            Manifest.permission.WRITE_CALENDAR
+        )
+
+        val missing = permissions.filter {
+            ContextCompat.checkSelfPermission(this, it) != PackageManager.PERMISSION_GRANTED
+        }
+
+        if (missing.isNotEmpty()) {
+            permissionLauncher.launch(missing.toTypedArray())
+        }
+    }
+
+    // ✅ registerForActivityResult 기반 처리
+    private val permissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { resultMap ->
+        val allGranted = resultMap.values.all { it }
+        if (allGranted) {
+            Toast.makeText(this, "캘린더 권한 허용됨", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(this, "캘린더 권한이 없으면 일정 등록이 안 됩니다", Toast.LENGTH_LONG).show()
         }
     }
 }
 
 @Composable
-fun tripcastApp() {
+fun TripcastApp() {
     val navController = rememberNavController()
     var myTripViewModel : MyTripViewModel = viewModel()
 
@@ -99,6 +139,7 @@ fun tripcastApp() {
             composable("setting") {
                 SettingScreen()
             }
+
             composable("search") {
 
                 SearchDestinationScreen(
