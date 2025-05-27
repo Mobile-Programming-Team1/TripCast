@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "374901626228",
+    "project_id": "tripcast-9def7",
+    "storage_bucket": "tripcast-9def7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374901626228:android:94da871b478dae41c88821",
+        "android_client_info": {
+          "package_name": "com.example.tripcast"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9SfRmNwo6FUYLP8Ka-w_MuhN0f60nzzI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

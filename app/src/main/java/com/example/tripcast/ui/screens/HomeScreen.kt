@@ -19,6 +19,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -31,6 +32,7 @@ import com.example.tripcast.viewmodel.MyTripViewModel
 
 @Composable
 fun HomeScreen(
+
     onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
 ) {
 //    val trips = listOf(
@@ -93,7 +95,9 @@ fun HomeScreen(
 //            airQuality = "Unhealthy"
 //        )
 //    )
-
+    LaunchedEffect(Unit) {
+        viewModel.loadTripsFromFirebase()
+    }
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
