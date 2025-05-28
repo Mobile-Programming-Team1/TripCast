@@ -6,6 +6,5 @@ data class Trip (
     val location: String,
     val weather: String,
     val temperature: String,
-    val UV: String,
     val airQuality: String,
 )
