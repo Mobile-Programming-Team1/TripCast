@@ -28,8 +28,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.tripcast.R
-import com.example.tripcast.firebase.TripSaver
 import com.example.tripcast.firebase.DailyWeather
+import com.example.tripcast.firebase.TripSaver
 import com.example.tripcast.util.getWeatherInfo
 import com.example.tripcast.viewmodel.MyTripViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -39,7 +39,7 @@ import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -> Unit) {
+fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -> Unit, onNavigateToPrev: () -> Unit) {
     var tripitem = viewModel.myTripList.last()
     val weatherInfo = remember {
         getWeatherInfo(tripitem.startDate, tripitem.endDate, tripitem.location)
@@ -53,7 +53,7 @@ fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -
         TopAppBar(
             title = { Text("Check Weather Info") },
             navigationIcon = {
-                IconButton(onClick = { /* Navigate back */ }) {
+                IconButton(onClick = { onNavigateToPrev() }) {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowLeft,
                         contentDescription = "Back"

@@ -105,7 +105,7 @@ fun TripcastApp() {
             BottomNavBar(
                 selectedTab = when (navController.currentBackStackEntryAsState().value?.destination?.route) {
                     "home" -> 0
-                    "trips", "calendar", "select_dates", "check_weather", "preferences" -> 1
+                    "search", "calendar", "select_dates", "check_overall", "preferences" -> 1
                     "setting", "explore" -> 2
                     else -> 0
                 },
@@ -156,13 +156,15 @@ fun TripcastApp() {
             composable("select_dates") {
                 SelectDatesScreen(
                     viewModel = myTripViewModel,
-                    onNavigateToCheckOverall = { navController.navigate("check_overall") }
+                    onNavigateToCheckOverall = { navController.navigate("check_overall") },
+                    onNavigateToPrev = {navController.popBackStack()}
                 )
             }
             composable("check_overall") {
                 CheckOverallScreen(
                     viewModel = myTripViewModel,
-                    onNavigateToPreferences = { navController.navigate("home") }
+                    onNavigateToPreferences = { navController.navigate("home") },
+                    onNavigateToPrev = {navController.popBackStack()}
                 )
             }
 //            composable("preferences") {

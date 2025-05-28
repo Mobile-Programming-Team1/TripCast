@@ -95,8 +95,6 @@ fun HomeScreen(
 //        )
 //    )
 
-    onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
-) {
 //    val trips = listOf(
 //        Trip(
 //            startDate = "2025-06-01",
