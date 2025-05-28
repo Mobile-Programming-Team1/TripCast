@@ -44,6 +44,7 @@ fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -
     val weatherInfo = remember {
         getWeatherInfo(tripitem.startDate, tripitem.endDate, tripitem.location)
     }
+    
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -139,7 +140,6 @@ fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -
 //        )
 
         Spacer(modifier = Modifier.weight(1f))
-
 
         Button(onClick = {
             CoroutineScope(Dispatchers.IO).launch {
