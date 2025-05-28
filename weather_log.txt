@@ -1,0 +1,731 @@
+Traceback (most recent call last):
+  File "/Users/junhyuk/AndroidStudioProjects/TripCast/weather_checker.py", line 7, in <module>
+    cred = credentials.Certificate("credentials.json")
+  File "/opt/homebrew/lib/python3.13/site-packages/firebase_admin/credentials.py", line 97, in __init__
+    with open(cert) as json_file:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'credentials.json'
+Traceback (most recent call last):
+  File "/Users/junhyuk/AndroidStudioProjects/TripCast/weather_checker.py", line 7, in <module>
+    cred = credentials.Certificate("credentials.json")
+  File "/opt/homebrew/lib/python3.13/site-packages/firebase_admin/credentials.py", line 97, in __init__
+    with open(cert) as json_file:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'credentials.json'
+Traceback (most recent call last):
+  File "/Users/junhyuk/AndroidStudioProjects/TripCast/weather_checker.py", line 7, in <module>
+    cred = credentials.Certificate("credentials.json")
+  File "/opt/homebrew/lib/python3.13/site-packages/firebase_admin/credentials.py", line 97, in __init__
+    with open(cert) as json_file:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'credentials.json'
+Traceback (most recent call last):
+  File "/Users/junhyuk/AndroidStudioProjects/TripCast/weather_checker.py", line 7, in <module>
+    cred = credentials.Certificate("credentials.json")
+  File "/opt/homebrew/lib/python3.13/site-packages/firebase_admin/credentials.py", line 97, in __init__
+    with open(cert) as json_file:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'credentials.json'
+Traceback (most recent call last):
+  File "/Users/junhyuk/AndroidStudioProjects/TripCast/weather_checker.py", line 7, in <module>
+    cred = credentials.Certificate("credentials.json")
+  File "/opt/homebrew/lib/python3.13/site-packages/firebase_admin/credentials.py", line 97, in __init__
+    with open(cert) as json_file:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'credentials.json'
+Traceback (most recent call last):
+  File "/Users/junhyuk/AndroidStudioProjects/TripCast/weather_checker.py", line 7, in <module>
+    cred = credentials.Certificate("credentials.json")
+  File "/opt/homebrew/lib/python3.13/site-packages/firebase_admin/credentials.py", line 97, in __init__
+    with open(cert) as json_file:
+         ~~~~^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'credentials.json'
+📦 여행 문서 확인: {'weather': [{'condition': 'RAINY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SNOWY', 'date': '2025-06-06'}], 'endDate': '2025-06-06', 'startDate': '2025-06-04', 'destination': 'Taiwan '}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602132024%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602289391%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602420698%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-06-10'}, {'condition': 'RAINY', 'date': '2025-06-11'}], 'endDate': '2025-06-11', 'startDate': '2025-06-10', 'destination': 'Japan '}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602543983%bee0a1b5bee0a1b5
+✅일치: Japan  | 2025-06-11 | RAINY
+📦 여행 문서 확인: {'weather': [{'condition': 'SUNNY', 'date': '2025-05-30'}, {'condition': 'SUNNY', 'date': '2025-05-31'}], 'endDate': '2025-05-31', 'startDate': '2025-05-30', 'destination': 'hongkong'}
+✅일치: hongkong | 2025-05-30 | SUNNY
+✅일치: hongkong | 2025-05-31 | SUNNY
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'endDate': '2025-06-06', 'startDate': '2025-06-04', 'destination': 'Taiwan '}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602672730%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602808268%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'weather': [{'condition': 'SNOWY', 'date': '2025-06-04'}, {'condition': 'SNOWY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'endDate': '2025-06-06', 'startDate': '2025-06-04', 'destination': 'Taiwan '}
+✅일치: Taiwan  | 2025-06-04 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334602928943%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603034287%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-05-28'}, {'condition': 'CLOUDY', 'date': '2025-05-29'}], 'endDate': '2025-05-29', 'startDate': '2025-05-28', 'destination': 'Seoul'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603163880%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603287465%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'SNOWY', 'date': '2025-05-28'}, {'condition': 'SUNNY', 'date': '2025-05-29'}, {'condition': 'SNOWY', 'date': '2025-05-30'}], 'endDate': '2025-05-30', 'startDate': '2025-05-28', 'destination': 'Seoul'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603399497%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | SUNNY
+✅일치: Seoul | 2025-05-30 | SNOWY
+📦 여행 문서 확인: {'weather': [{'condition': 'SUNNY', 'date': '2025-07-01'}, {'condition': 'RAINY', 'date': '2025-07-02'}], 'endDate': '2025-07-02', 'startDate': '2025-07-01', 'destination': 'Osaka '}
+✅일치: Osaka  | 2025-07-01 | SUNNY
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603524218%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'SUNNY', 'date': '2025-06-11'}, {'condition': 'SUNNY', 'date': '2025-06-12'}, {'condition': 'SNOWY', 'date': '2025-06-13'}], 'endDate': '2025-06-13', 'startDate': '2025-06-11', 'destination': 'china'}
+✅일치: china | 2025-06-11 | SUNNY
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603647068%bee0a1b5bee0a1b5
+✅일치: china | 2025-06-13 | SNOWY
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-05-30'}, {'condition': 'SNOWY', 'date': '2025-05-31'}], 'endDate': '2025-05-31', 'startDate': '2025-05-30', 'destination': 'Tokyo'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603766034%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334603882863%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}], 'endDate': '2025-06-06', 'startDate': '2025-06-04'}
+✅일치: Taiwan  | 2025-06-04 | RAINY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334661784320%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334661907005%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Japan ', 'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}], 'endDate': '2025-06-11', 'startDate': '2025-06-10'}
+✅일치: Japan  | 2025-06-10 | CLOUDY
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334662028554%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'hongkong', 'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}], 'endDate': '2025-05-31', 'startDate': '2025-05-30'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334662478901%bee0a1b5bee0a1b5
+✅일치: hongkong | 2025-05-31 | SUNNY
+📦 여행 문서 확인: {'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'endDate': '2025-06-06', 'startDate': '2025-06-04'}
+✅일치: Taiwan  | 2025-06-04 | CLOUDY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334662599712%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'endDate': '2025-06-06', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334662735177%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334662860168%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'destination': 'Seoul', 'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}], 'endDate': '2025-05-29', 'startDate': '2025-05-28'}
+✅일치: Seoul | 2025-05-28 | CLOUDY
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334662987437%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Seoul', 'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}], 'endDate': '2025-05-30', 'startDate': '2025-05-28'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663120869%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663239889%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663356802%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Osaka ', 'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}], 'endDate': '2025-07-02', 'startDate': '2025-07-01'}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663501351%bee0a1b5bee0a1b5
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663613428%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'china', 'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}], 'endDate': '2025-06-13', 'startDate': '2025-06-11'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663749089%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663858523%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334663994440%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Tokyo', 'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}], 'endDate': '2025-05-31', 'startDate': '2025-05-30'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334664094952%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334664211489%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'weather': [{'condition': 'RAINY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SNOWY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334722369267%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334722501766%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334722663379%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-11', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-10'}, {'condition': 'RAINY', 'date': '2025-06-11'}], 'destination': 'Japan ', 'startDate': '2025-06-10'}
+✅일치: Japan  | 2025-06-10 | CLOUDY
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334722805385%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-31', 'weather': [{'condition': 'SUNNY', 'date': '2025-05-30'}, {'condition': 'SUNNY', 'date': '2025-05-31'}], 'destination': 'hongkong', 'startDate': '2025-05-30'}
+✅일치: hongkong | 2025-05-30 | SUNNY
+✅일치: hongkong | 2025-05-31 | SUNNY
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334722919649%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723047867%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723178560%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'weather': [{'condition': 'SNOWY', 'date': '2025-06-04'}, {'condition': 'SNOWY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723310014%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723442877%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723634914%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-29', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-28'}, {'condition': 'CLOUDY', 'date': '2025-05-29'}], 'destination': 'Seoul', 'startDate': '2025-05-28'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723763555%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334723884584%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-30', 'weather': [{'condition': 'SNOWY', 'date': '2025-05-28'}, {'condition': 'SUNNY', 'date': '2025-05-29'}, {'condition': 'SNOWY', 'date': '2025-05-30'}], 'destination': 'Seoul', 'startDate': '2025-05-28'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724012524%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | SUNNY
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724132034%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-07-02', 'weather': [{'condition': 'SUNNY', 'date': '2025-07-01'}, {'condition': 'RAINY', 'date': '2025-07-02'}], 'destination': 'Osaka ', 'startDate': '2025-07-01'}
+✅일치: Osaka  | 2025-07-01 | SUNNY
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724259450%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-13', 'weather': [{'condition': 'SUNNY', 'date': '2025-06-11'}, {'condition': 'SUNNY', 'date': '2025-06-12'}, {'condition': 'SNOWY', 'date': '2025-06-13'}], 'destination': 'china', 'startDate': '2025-06-11'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724372292%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724486915%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724624318%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-31', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-30'}, {'condition': 'SNOWY', 'date': '2025-05-31'}], 'destination': 'Tokyo', 'startDate': '2025-05-30'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724750061%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334724871625%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Taiwan ', 'startDate': '2025-06-04', 'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}], 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | RAINY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334781900238%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SNOWY
+📦 여행 문서 확인: {'destination': 'Japan ', 'startDate': '2025-06-10', 'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}], 'endDate': '2025-06-11'}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782034505%bee0a1b5bee0a1b5
+✅일치: Japan  | 2025-06-11 | RAINY
+📦 여행 문서 확인: {'destination': 'hongkong', 'startDate': '2025-05-30', 'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}], 'endDate': '2025-05-31'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782172343%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782346676%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Taiwan ', 'startDate': '2025-06-04', 'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | CLOUDY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782472116%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782624850%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Taiwan ', 'startDate': '2025-06-04', 'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782773298%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334782933146%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Seoul', 'startDate': '2025-05-28', 'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}], 'endDate': '2025-05-29'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783059683%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | CLOUDY
+📦 여행 문서 확인: {'destination': 'Seoul', 'startDate': '2025-05-28', 'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}], 'endDate': '2025-05-30'}
+✅일치: Seoul | 2025-05-28 | SNOWY
+✅일치: Seoul | 2025-05-29 | SUNNY
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783201152%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Osaka ', 'startDate': '2025-07-01', 'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}], 'endDate': '2025-07-02'}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783341350%bee0a1b5bee0a1b5
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783473183%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'china', 'startDate': '2025-06-11', 'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}], 'endDate': '2025-06-13'}
+✅일치: china | 2025-06-11 | SUNNY
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783602203%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783738260%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'destination': 'Tokyo', 'startDate': '2025-05-30', 'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}], 'endDate': '2025-05-31'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334783876583%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334784024825%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04', 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847085330%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847202883%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847324358%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}], 'destination': 'Japan ', 'startDate': '2025-06-10', 'endDate': '2025-06-11'}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847459990%bee0a1b5bee0a1b5
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847600693%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}], 'destination': 'hongkong', 'startDate': '2025-05-30', 'endDate': '2025-05-31'}
+✅일치: hongkong | 2025-05-30 | SUNNY
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847718476%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04', 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | CLOUDY
+✅일치: Taiwan  | 2025-06-05 | SUNNY
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847847290%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04', 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334847980570%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334848103839%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334848430620%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}], 'destination': 'Seoul', 'startDate': '2025-05-28', 'endDate': '2025-05-29'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334848544024%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334848687742%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}], 'destination': 'Seoul', 'startDate': '2025-05-28', 'endDate': '2025-05-30'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334848783728%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334848903996%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-30 | SNOWY
+📦 여행 문서 확인: {'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}], 'destination': 'Osaka ', 'startDate': '2025-07-01', 'endDate': '2025-07-02'}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334849035018%bee0a1b5bee0a1b5
+✅일치: Osaka  | 2025-07-02 | RAINY
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}], 'destination': 'china', 'startDate': '2025-06-11', 'endDate': '2025-06-13'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334849161589%bee0a1b5bee0a1b5
+✅일치: china | 2025-06-12 | SUNNY
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334849291972%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}], 'destination': 'Tokyo', 'startDate': '2025-05-30', 'endDate': '2025-05-31'}
+✅일치: Tokyo | 2025-05-30 | CLOUDY
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334849406607%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'weather': [{'condition': 'RAINY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SNOWY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334902432663%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334902566210%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334902684751%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-11', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-10'}, {'condition': 'RAINY', 'date': '2025-06-11'}], 'destination': 'Japan ', 'startDate': '2025-06-10'}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334902818023%bee0a1b5bee0a1b5
+✅일치: Japan  | 2025-06-11 | RAINY
+📦 여행 문서 확인: {'endDate': '2025-05-31', 'weather': [{'condition': 'SUNNY', 'date': '2025-05-30'}, {'condition': 'SUNNY', 'date': '2025-05-31'}], 'destination': 'hongkong', 'startDate': '2025-05-30'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334902945885%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903069506%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903174464%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-05 | SUNNY
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'weather': [{'condition': 'SNOWY', 'date': '2025-06-04'}, {'condition': 'SNOWY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'startDate': '2025-06-04'}
+✅일치: Taiwan  | 2025-06-04 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903312334%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903414907%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-29', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-28'}, {'condition': 'CLOUDY', 'date': '2025-05-29'}], 'destination': 'Seoul', 'startDate': '2025-05-28'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903532373%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903655072%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-30', 'weather': [{'condition': 'SNOWY', 'date': '2025-05-28'}, {'condition': 'SUNNY', 'date': '2025-05-29'}, {'condition': 'SNOWY', 'date': '2025-05-30'}], 'destination': 'Seoul', 'startDate': '2025-05-28'}
+✅일치: Seoul | 2025-05-28 | SNOWY
+❗차이 발생: Seoul | 2025-05-29 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903772466%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334903892412%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-07-02', 'weather': [{'condition': 'SUNNY', 'date': '2025-07-01'}, {'condition': 'RAINY', 'date': '2025-07-02'}], 'destination': 'Osaka ', 'startDate': '2025-07-01'}
+✅일치: Osaka  | 2025-07-01 | SUNNY
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334904090089%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-13', 'weather': [{'condition': 'SUNNY', 'date': '2025-06-11'}, {'condition': 'SUNNY', 'date': '2025-06-12'}, {'condition': 'SNOWY', 'date': '2025-06-13'}], 'destination': 'china', 'startDate': '2025-06-11'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334904207146%bee0a1b5bee0a1b5
+✅일치: china | 2025-06-12 | SUNNY
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334904358444%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-31', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-30'}, {'condition': 'SNOWY', 'date': '2025-05-31'}], 'destination': 'Tokyo', 'startDate': '2025-05-30'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334904499893%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334904622244%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}], 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334962621946%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334962902442%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963173758%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-10', 'destination': 'Japan ', 'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}], 'endDate': '2025-06-11'}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963317182%bee0a1b5bee0a1b5
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963420955%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'destination': 'hongkong', 'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}], 'endDate': '2025-05-31'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963531132%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963672831%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963810628%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334963930299%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964069426%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964206666%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964320244%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'destination': 'Seoul', 'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}], 'endDate': '2025-05-29'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964454239%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964566975%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'destination': 'Seoul', 'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}], 'endDate': '2025-05-30'}
+✅일치: Seoul | 2025-05-28 | SNOWY
+✅일치: Seoul | 2025-05-29 | SUNNY
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964685083%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-07-01', 'destination': 'Osaka ', 'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}], 'endDate': '2025-07-02'}
+✅일치: Osaka  | 2025-07-01 | SUNNY
+✅일치: Osaka  | 2025-07-02 | RAINY
+📦 여행 문서 확인: {'startDate': '2025-06-11', 'destination': 'china', 'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}], 'endDate': '2025-06-13'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964819457%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334964953813%bee0a1b5bee0a1b5
+✅일치: china | 2025-06-13 | SNOWY
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'destination': 'Tokyo', 'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}], 'endDate': '2025-05-31'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748334965078287%bee0a1b5bee0a1b5
+✅일치: Tokyo | 2025-05-31 | SNOWY
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}], 'startDate': '2025-06-04', 'destination': 'Taiwan ', 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | RAINY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022117567%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SNOWY
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}], 'startDate': '2025-06-10', 'destination': 'Japan ', 'endDate': '2025-06-11'}
+✅일치: Japan  | 2025-06-10 | CLOUDY
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022258635%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}], 'startDate': '2025-05-30', 'destination': 'hongkong', 'endDate': '2025-05-31'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022383393%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022510205%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'startDate': '2025-06-04', 'destination': 'Taiwan ', 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022638087%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022770615%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'startDate': '2025-06-04', 'destination': 'Taiwan ', 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335022908935%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023022119%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023151639%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}], 'startDate': '2025-05-28', 'destination': 'Seoul', 'endDate': '2025-05-29'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023267757%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023389277%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}], 'startDate': '2025-05-28', 'destination': 'Seoul', 'endDate': '2025-05-30'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023523648%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | SUNNY
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023655206%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}], 'startDate': '2025-07-01', 'destination': 'Osaka ', 'endDate': '2025-07-02'}
+✅일치: Osaka  | 2025-07-01 | SUNNY
+✅일치: Osaka  | 2025-07-02 | RAINY
+📦 여행 문서 확인: {'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}], 'startDate': '2025-06-11', 'destination': 'china', 'endDate': '2025-06-13'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023782883%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335023908478%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335024034018%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}], 'startDate': '2025-05-30', 'destination': 'Tokyo', 'endDate': '2025-05-31'}
+✅일치: Tokyo | 2025-05-30 | CLOUDY
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335024180454%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'endDate': '2025-06-06', 'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}]}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082039622%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-05 | SUNNY
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082185896%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-10', 'endDate': '2025-06-11', 'destination': 'Japan ', 'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}]}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082300747%bee0a1b5bee0a1b5
+✅일치: Japan  | 2025-06-11 | RAINY
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'endDate': '2025-05-31', 'destination': 'hongkong', 'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}]}
+✅일치: hongkong | 2025-05-30 | SUNNY
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082426399%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'endDate': '2025-06-06', 'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}]}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082587263%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082698947%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082807465%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'endDate': '2025-06-06', 'destination': 'Taiwan ', 'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}]}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335082943240%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083079120%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083192032%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'endDate': '2025-05-29', 'destination': 'Seoul', 'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}]}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083307189%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083432451%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'endDate': '2025-05-30', 'destination': 'Seoul', 'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}]}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083553987%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | SUNNY
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083701709%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-07-01', 'endDate': '2025-07-02', 'destination': 'Osaka ', 'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}]}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083814833%bee0a1b5bee0a1b5
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335083959507%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-11', 'endDate': '2025-06-13', 'destination': 'china', 'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}]}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335084055659%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335084176432%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335084297868%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'endDate': '2025-05-31', 'destination': 'Tokyo', 'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}]}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335084430488%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335084557927%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'RAINY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SNOWY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'endDate': '2025-06-06', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335142631736%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-05 | SUNNY
+✅일치: Taiwan  | 2025-06-06 | SNOWY
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-06-10'}, {'condition': 'RAINY', 'date': '2025-06-11'}], 'destination': 'Japan ', 'endDate': '2025-06-11', 'startDate': '2025-06-10'}
+✅일치: Japan  | 2025-06-10 | CLOUDY
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335142780051%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'SUNNY', 'date': '2025-05-30'}, {'condition': 'SUNNY', 'date': '2025-05-31'}], 'destination': 'hongkong', 'endDate': '2025-05-31', 'startDate': '2025-05-30'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335142920998%bee0a1b5bee0a1b5
+✅일치: hongkong | 2025-05-31 | SUNNY
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'endDate': '2025-06-06', 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143045133%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143168307%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143290244%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'SNOWY', 'date': '2025-06-04'}, {'condition': 'SNOWY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'destination': 'Taiwan ', 'endDate': '2025-06-06', 'startDate': '2025-06-04'}
+✅일치: Taiwan  | 2025-06-04 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143396117%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143533415%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-05-28'}, {'condition': 'CLOUDY', 'date': '2025-05-29'}], 'destination': 'Seoul', 'endDate': '2025-05-29', 'startDate': '2025-05-28'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143667611%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | CLOUDY
+📦 여행 문서 확인: {'weather': [{'condition': 'SNOWY', 'date': '2025-05-28'}, {'condition': 'SUNNY', 'date': '2025-05-29'}, {'condition': 'SNOWY', 'date': '2025-05-30'}], 'destination': 'Seoul', 'endDate': '2025-05-30', 'startDate': '2025-05-28'}
+✅일치: Seoul | 2025-05-28 | SNOWY
+❗차이 발생: Seoul | 2025-05-29 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143787650%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335143919175%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'SUNNY', 'date': '2025-07-01'}, {'condition': 'RAINY', 'date': '2025-07-02'}], 'destination': 'Osaka ', 'endDate': '2025-07-02', 'startDate': '2025-07-01'}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335144040837%bee0a1b5bee0a1b5
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335144181854%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'SUNNY', 'date': '2025-06-11'}, {'condition': 'SUNNY', 'date': '2025-06-12'}, {'condition': 'SNOWY', 'date': '2025-06-13'}], 'destination': 'china', 'endDate': '2025-06-13', 'startDate': '2025-06-11'}
+✅일치: china | 2025-06-11 | SUNNY
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335144312310%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335144434917%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'weather': [{'condition': 'CLOUDY', 'date': '2025-05-30'}, {'condition': 'SNOWY', 'date': '2025-05-31'}], 'destination': 'Tokyo', 'endDate': '2025-05-31', 'startDate': '2025-05-30'}
+✅일치: Tokyo | 2025-05-30 | CLOUDY
+✅일치: Tokyo | 2025-05-31 | SNOWY
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'destination': 'Taiwan ', 'weather': [{'condition': 'RAINY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SNOWY', 'date': '2025-06-06'}], 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335202447395%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335202585082%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SNOWY
+📦 여행 문서 확인: {'endDate': '2025-06-11', 'destination': 'Japan ', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-10'}, {'condition': 'RAINY', 'date': '2025-06-11'}], 'startDate': '2025-06-10'}
+✅일치: Japan  | 2025-06-10 | CLOUDY
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335202687723%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-31', 'destination': 'hongkong', 'weather': [{'condition': 'SUNNY', 'date': '2025-05-30'}, {'condition': 'SUNNY', 'date': '2025-05-31'}], 'startDate': '2025-05-30'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335202815321%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335202925934%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'destination': 'Taiwan ', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203047631%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203179045%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'endDate': '2025-06-06', 'destination': 'Taiwan ', 'weather': [{'condition': 'SNOWY', 'date': '2025-06-04'}, {'condition': 'SNOWY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'startDate': '2025-06-04'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203305921%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-05 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203420002%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-29', 'destination': 'Seoul', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-28'}, {'condition': 'CLOUDY', 'date': '2025-05-29'}], 'startDate': '2025-05-28'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203567411%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | CLOUDY
+📦 여행 문서 확인: {'endDate': '2025-05-30', 'destination': 'Seoul', 'weather': [{'condition': 'SNOWY', 'date': '2025-05-28'}, {'condition': 'SUNNY', 'date': '2025-05-29'}, {'condition': 'SNOWY', 'date': '2025-05-30'}], 'startDate': '2025-05-28'}
+✅일치: Seoul | 2025-05-28 | SNOWY
+✅일치: Seoul | 2025-05-29 | SUNNY
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203700670%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-07-02', 'destination': 'Osaka ', 'weather': [{'condition': 'SUNNY', 'date': '2025-07-01'}, {'condition': 'RAINY', 'date': '2025-07-02'}], 'startDate': '2025-07-01'}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203808128%bee0a1b5bee0a1b5
+✅일치: Osaka  | 2025-07-02 | RAINY
+📦 여행 문서 확인: {'endDate': '2025-06-13', 'destination': 'china', 'weather': [{'condition': 'SUNNY', 'date': '2025-06-11'}, {'condition': 'SUNNY', 'date': '2025-06-12'}, {'condition': 'SNOWY', 'date': '2025-06-13'}], 'startDate': '2025-06-11'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335203929986%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335204017204%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335204140366%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'endDate': '2025-05-31', 'destination': 'Tokyo', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-30'}, {'condition': 'SNOWY', 'date': '2025-05-31'}], 'startDate': '2025-05-30'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335204272787%bee0a1b5bee0a1b5
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335204394471%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'destination': 'Taiwan ', 'weather': [{'condition': 'RAINY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SNOWY', 'date': '2025-06-06'}], 'endDate': '2025-06-06'}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335262488833%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335262622078%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335262732056%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-10', 'destination': 'Japan ', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-10'}, {'condition': 'RAINY', 'date': '2025-06-11'}], 'endDate': '2025-06-11'}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335262864187%bee0a1b5bee0a1b5
+✅일치: Japan  | 2025-06-11 | RAINY
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'destination': 'hongkong', 'weather': [{'condition': 'SUNNY', 'date': '2025-05-30'}, {'condition': 'SUNNY', 'date': '2025-05-31'}], 'endDate': '2025-05-31'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335262992738%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263116374%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'destination': 'Taiwan ', 'weather': [{'condition': 'CLOUDY', 'date': '2025-06-04'}, {'condition': 'SUNNY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | CLOUDY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263218491%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263318774%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'destination': 'Taiwan ', 'weather': [{'condition': 'SNOWY', 'date': '2025-06-04'}, {'condition': 'SNOWY', 'date': '2025-06-05'}, {'condition': 'SUNNY', 'date': '2025-06-06'}], 'endDate': '2025-06-06'}
+✅일치: Taiwan  | 2025-06-04 | SNOWY
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263438093%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'destination': 'Seoul', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-28'}, {'condition': 'CLOUDY', 'date': '2025-05-29'}], 'endDate': '2025-05-29'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263568070%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-29 | CLOUDY
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'destination': 'Seoul', 'weather': [{'condition': 'SNOWY', 'date': '2025-05-28'}, {'condition': 'SUNNY', 'date': '2025-05-29'}, {'condition': 'SNOWY', 'date': '2025-05-30'}], 'endDate': '2025-05-30'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263698369%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263824050%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-30 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335263968145%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-07-01', 'destination': 'Osaka ', 'weather': [{'condition': 'SUNNY', 'date': '2025-07-01'}, {'condition': 'RAINY', 'date': '2025-07-02'}], 'endDate': '2025-07-02'}
+❗차이 발생: Osaka  | 2025-07-01 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335264079163%bee0a1b5bee0a1b5
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335264208763%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-11', 'destination': 'china', 'weather': [{'condition': 'SUNNY', 'date': '2025-06-11'}, {'condition': 'SUNNY', 'date': '2025-06-12'}, {'condition': 'SNOWY', 'date': '2025-06-13'}], 'endDate': '2025-06-13'}
+✅일치: china | 2025-06-11 | SUNNY
+✅일치: china | 2025-06-12 | SUNNY
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335264342496%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'destination': 'Tokyo', 'weather': [{'condition': 'CLOUDY', 'date': '2025-05-30'}, {'condition': 'SNOWY', 'date': '2025-05-31'}], 'endDate': '2025-05-31'}
+❗차이 발생: Tokyo | 2025-05-30 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748335264461699%bee0a1b5bee0a1b5
+✅일치: Tokyo | 2025-05-31 | SNOWY
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'endDate': '2025-06-06', 'weather': [{'date': '2025-06-04', 'condition': 'RAINY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SNOWY'}], 'destination': 'Taiwan '}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336402942317%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336403121335%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-06 | SNOWY
+📦 여행 문서 확인: {'startDate': '2025-06-10', 'endDate': '2025-06-11', 'weather': [{'date': '2025-06-10', 'condition': 'CLOUDY'}, {'date': '2025-06-11', 'condition': 'RAINY'}], 'destination': 'Japan '}
+❗차이 발생: Japan  | 2025-06-10 | 예상: CLOUDY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336403502733%bee0a1b5bee0a1b5
+❗차이 발생: Japan  | 2025-06-11 | 예상: RAINY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336403647010%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-16', 'endDate': '2025-06-17', 'weather': [{'date': '2025-06-16', 'condition': 'SNOWY'}, {'date': '2025-06-17', 'condition': 'SNOWY'}], 'destination': 'india'}
+❗차이 발생: india | 2025-06-16 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336403767764%bee0a1b5bee0a1b5
+❗차이 발생: india | 2025-06-17 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336403940719%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'endDate': '2025-05-31', 'weather': [{'date': '2025-05-30', 'condition': 'SUNNY'}, {'date': '2025-05-31', 'condition': 'SUNNY'}], 'destination': 'hongkong'}
+❗차이 발생: hongkong | 2025-05-30 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336404065518%bee0a1b5bee0a1b5
+❗차이 발생: hongkong | 2025-05-31 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336404154424%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'endDate': '2025-06-06', 'weather': [{'date': '2025-06-04', 'condition': 'CLOUDY'}, {'date': '2025-06-05', 'condition': 'SUNNY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'destination': 'Taiwan '}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336404312249%bee0a1b5bee0a1b5
+✅일치: Taiwan  | 2025-06-05 | SUNNY
+✅일치: Taiwan  | 2025-06-06 | SUNNY
+📦 여행 문서 확인: {'startDate': '2025-06-04', 'endDate': '2025-06-06', 'weather': [{'date': '2025-06-04', 'condition': 'SNOWY'}, {'date': '2025-06-05', 'condition': 'SNOWY'}, {'date': '2025-06-06', 'condition': 'SUNNY'}], 'destination': 'Taiwan '}
+❗차이 발생: Taiwan  | 2025-06-04 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336404487460%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-05 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336404649592%bee0a1b5bee0a1b5
+❗차이 발생: Taiwan  | 2025-06-06 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336404767347%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'endDate': '2025-05-29', 'weather': [{'date': '2025-05-28', 'condition': 'CLOUDY'}, {'date': '2025-05-29', 'condition': 'CLOUDY'}], 'destination': 'Seoul'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336405008681%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: CLOUDY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336405157615%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-28', 'endDate': '2025-05-30', 'weather': [{'date': '2025-05-28', 'condition': 'SNOWY'}, {'date': '2025-05-29', 'condition': 'SUNNY'}, {'date': '2025-05-30', 'condition': 'SNOWY'}], 'destination': 'Seoul'}
+❗차이 발생: Seoul | 2025-05-28 | 예상: SNOWY, 실제: Sunny
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336405267652%bee0a1b5bee0a1b5
+❗차이 발생: Seoul | 2025-05-29 | 예상: SUNNY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336405495977%bee0a1b5bee0a1b5
+✅일치: Seoul | 2025-05-30 | SNOWY
+📦 여행 문서 확인: {'startDate': '2025-07-01', 'endDate': '2025-07-02', 'weather': [{'date': '2025-07-01', 'condition': 'SUNNY'}, {'date': '2025-07-02', 'condition': 'RAINY'}], 'destination': 'Osaka '}
+✅일치: Osaka  | 2025-07-01 | SUNNY
+❗차이 발생: Osaka  | 2025-07-02 | 예상: RAINY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336405640380%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-06-11', 'endDate': '2025-06-13', 'weather': [{'date': '2025-06-11', 'condition': 'SUNNY'}, {'date': '2025-06-12', 'condition': 'SUNNY'}, {'date': '2025-06-13', 'condition': 'SNOWY'}], 'destination': 'china'}
+❗차이 발생: china | 2025-06-11 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336406261060%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-12 | 예상: SUNNY, 실제: Snowy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336406393665%bee0a1b5bee0a1b5
+❗차이 발생: china | 2025-06-13 | 예상: SNOWY, 실제: Cloudy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336406518307%bee0a1b5bee0a1b5
+📦 여행 문서 확인: {'startDate': '2025-05-30', 'endDate': '2025-05-31', 'weather': [{'date': '2025-05-30', 'condition': 'CLOUDY'}, {'date': '2025-05-31', 'condition': 'SNOWY'}], 'destination': 'Tokyo'}
+✅일치: Tokyo | 2025-05-30 | CLOUDY
+❗차이 발생: Tokyo | 2025-05-31 | 예상: SNOWY, 실제: Rainy
+📬 v1 알림 전송 완료: projects/tripcast-9def7/messages/0:1748336406638592%bee0a1b5bee0a1b5

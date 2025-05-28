@@ -21,20 +21,30 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.tripcast.R
+import com.example.tripcast.firebase.TripSaver
+import com.example.tripcast.firebase.DailyWeather
 import com.example.tripcast.util.getWeatherInfo
 import com.example.tripcast.viewmodel.MyTripViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -> Unit) {
     var tripitem = viewModel.myTripList.last()
-    val weatherInfo = getWeatherInfo(tripitem.startDate, tripitem.endDate, tripitem.location)
+    val weatherInfo = remember {
+        getWeatherInfo(tripitem.startDate, tripitem.endDate, tripitem.location)
+    }
+    
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -131,14 +141,28 @@ fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -
 
         Spacer(modifier = Modifier.weight(1f))
 
-        Button(
-            onClick = onNavigateToPreferences,
+        Button(onClick = {
+            CoroutineScope(Dispatchers.IO).launch {
+                val dailyWeatherList = weatherInfo.map {
+                    DailyWeather(date = it.date, condition = it.weather.name)
+                }
+                TripSaver.saveTrip(
+                    destination = tripitem.location,
+                    startDate = LocalDate.parse(tripitem.startDate),
+                    endDate = LocalDate.parse(tripitem.endDate),
+                    weatherList = dailyWeatherList
+                )
+            }
+            onNavigateToPreferences()
+        },
             modifier = Modifier.fillMaxWidth()
         ) {
             Text("Confirm")
         }
     }
-}
+
+    }
+
 
 
 @Composable
