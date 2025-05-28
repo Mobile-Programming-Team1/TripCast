@@ -73,5 +73,4 @@ class MyTripViewModel : ViewModel() {
             android.util.Log.d("MyTripViewModel", "변환 후 Trip 개수: ${_myTripList.size}")
         }
     }
-
 }

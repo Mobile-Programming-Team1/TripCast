@@ -32,6 +32,68 @@ import com.example.tripcast.viewmodel.MyTripViewModel
 
 @Composable
 fun HomeScreen(
+    onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
+) {
+//    val trips = listOf(
+//        Trip(
+//            startDate = "2025-06-01",
+//            endDate = "2025-06-05",
+//            location = "Seoul",
+//            weather = "Sunny",
+//            temperature = "26°C",
+//            UV = "High",
+//            airQuality = "Moderate"
+//        ),
+//        Trip(
+//            startDate = "2025-07-10",
+//            endDate = "2025-07-15",
+//            location = "Tokyo",
+//            weather = "Rainy",
+//            temperature = "22°C",
+//            UV = "Low",
+//            airQuality = "Good"
+//        ),
+//        Trip(
+//            startDate = "2025-08-01",
+//            endDate = "2025-08-07",
+//            location = "Paris",
+//            weather = "Cloudy",
+//            temperature = "24°C",
+//            UV = "Medium",
+//            airQuality = "Moderate"
+//        ),
+//        Trip(
+//            startDate = "2025-09-05",
+//            endDate = "2025-09-10",
+//            location = "New York",
+//            weather = "Sunny",
+//            temperature = "28°C",
+//            UV = "High",
+//            airQuality = "Poor"
+//        ),
+//
+//    )
+//
+//    val recommendedTrips = listOf(
+//        Trip(
+//            startDate = "2025-10-12",
+//            endDate = "2025-10-16",
+//            location = "Sydney",
+//            weather = "Windy",
+//            temperature = "19°C",
+//            UV = "Medium",
+//            airQuality = "Good"
+//        ),
+//        Trip(
+//            startDate = "2025-11-20",
+//            endDate = "2025-11-25",
+//            location = "London",
+//            weather = "Foggy",
+//            temperature = "10°C",
+//            UV = "Low",
+//            airQuality = "Unhealthy"
+//        )
+//    )
 
     onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
 ) {
