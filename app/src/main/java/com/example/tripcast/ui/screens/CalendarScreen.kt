@@ -1,24 +1,34 @@
 package com.example.tripcast.ui.screens
 
-import android.content.Context
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import com.example.tripcast.ui.components.CalendarView
 import com.example.tripcast.util.CalendarUtil
-import java.time.LocalDate
-import java.util.*
 import com.example.tripcast.viewmodel.MyTripViewModel
+import java.time.LocalDate
+import java.util.Calendar
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit, viewModel: MyTripViewModel) {
+fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit, viewModel: MyTripViewModel, onNavigateToPrev: () -> Unit) {
     val context = LocalContext.current
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
     LazyColumn (
@@ -26,6 +36,19 @@ fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        item {
+            TopAppBar(
+                title = { Text("Calendar") },
+                navigationIcon = {
+                    IconButton(onClick = { onNavigateToPrev() }) {
+                        Icon(
+                            imageVector = Icons.Default.KeyboardArrowLeft,
+                            contentDescription = "Back"
+                        )
+                    }
+                }
+            )
+        }
         item {
             CalendarView(
                 initialDate = selectedDate,
