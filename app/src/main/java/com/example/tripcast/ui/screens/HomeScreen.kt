@@ -34,129 +34,6 @@ import com.example.tripcast.viewmodel.MyTripViewModel
 fun HomeScreen(
     onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
 ) {
-//    val trips = listOf(
-//        Trip(
-//            startDate = "2025-06-01",
-//            endDate = "2025-06-05",
-//            location = "Seoul",
-//            weather = "Sunny",
-//            temperature = "26°C",
-//            UV = "High",
-//            airQuality = "Moderate"
-//        ),
-//        Trip(
-//            startDate = "2025-07-10",
-//            endDate = "2025-07-15",
-//            location = "Tokyo",
-//            weather = "Rainy",
-//            temperature = "22°C",
-//            UV = "Low",
-//            airQuality = "Good"
-//        ),
-//        Trip(
-//            startDate = "2025-08-01",
-//            endDate = "2025-08-07",
-//            location = "Paris",
-//            weather = "Cloudy",
-//            temperature = "24°C",
-//            UV = "Medium",
-//            airQuality = "Moderate"
-//        ),
-//        Trip(
-//            startDate = "2025-09-05",
-//            endDate = "2025-09-10",
-//            location = "New York",
-//            weather = "Sunny",
-//            temperature = "28°C",
-//            UV = "High",
-//            airQuality = "Poor"
-//        ),
-//
-//    )
-//
-//    val recommendedTrips = listOf(
-//        Trip(
-//            startDate = "2025-10-12",
-//            endDate = "2025-10-16",
-//            location = "Sydney",
-//            weather = "Windy",
-//            temperature = "19°C",
-//            UV = "Medium",
-//            airQuality = "Good"
-//        ),
-//        Trip(
-//            startDate = "2025-11-20",
-//            endDate = "2025-11-25",
-//            location = "London",
-//            weather = "Foggy",
-//            temperature = "10°C",
-//            UV = "Low",
-//            airQuality = "Unhealthy"
-//        )
-//    )
-
-    onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
-) {
-//    val trips = listOf(
-//        Trip(
-//            startDate = "2025-06-01",
-//            endDate = "2025-06-05",
-//            location = "Seoul",
-//            weather = "Sunny",
-//            temperature = "26°C",
-//            UV = "High",
-//            airQuality = "Moderate"
-//        ),
-//        Trip(
-//            startDate = "2025-07-10",
-//            endDate = "2025-07-15",
-//            location = "Tokyo",
-//            weather = "Rainy",
-//            temperature = "22°C",
-//            UV = "Low",
-//            airQuality = "Good"
-//        ),
-//        Trip(
-//            startDate = "2025-08-01",
-//            endDate = "2025-08-07",
-//            location = "Paris",
-//            weather = "Cloudy",
-//            temperature = "24°C",
-//            UV = "Medium",
-//            airQuality = "Moderate"
-//        ),
-//        Trip(
-//            startDate = "2025-09-05",
-//            endDate = "2025-09-10",
-//            location = "New York",
-//            weather = "Sunny",
-//            temperature = "28°C",
-//            UV = "High",
-//            airQuality = "Poor"
-//        ),
-//
-//    )
-//
-//    val recommendedTrips = listOf(
-//        Trip(
-//            startDate = "2025-10-12",
-//            endDate = "2025-10-16",
-//            location = "Sydney",
-//            weather = "Windy",
-//            temperature = "19°C",
-//            UV = "Medium",
-//            airQuality = "Good"
-//        ),
-//        Trip(
-//            startDate = "2025-11-20",
-//            endDate = "2025-11-25",
-//            location = "London",
-//            weather = "Foggy",
-//            temperature = "10°C",
-//            UV = "Low",
-//            airQuality = "Unhealthy"
-//        )
-//    )
     LaunchedEffect(Unit) {
         viewModel.loadTripsFromFirebase()
     }
@@ -210,40 +87,40 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(8.dp))
         }
 
-        item {
-            Spacer(modifier = Modifier.height(24.dp))
+//        item {
+//            Spacer(modifier = Modifier.height(24.dp))
+//
+//            Card(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(120.dp),
+//                shape = RoundedCornerShape(12.dp),
+//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
+//            ) {
+//                Box {
+//                    Image(
+//                        painter = painterResource(id = R.drawable.gusto),
+//                        contentDescription = "Travel Gear",
+//                        modifier = Modifier.fillMaxSize(),
+//                        contentScale = ContentScale.Crop
+//                    )
+//                }
+//            }
+//
+//            Spacer(modifier = Modifier.height(16.dp))
 
-            Card(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(120.dp),
-                shape = RoundedCornerShape(12.dp),
-                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-            ) {
-                Box {
-                    Image(
-                        painter = painterResource(id = R.drawable.gusto),
-                        contentDescription = "Travel Gear",
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Crop
-                    )
-                }
-            }
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            Text(
-                text = "Recommended Trips",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold
-            )
-
-            Text(
-                text = "Based on your favorite activities",
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
+//            Text(
+//                text = "Recommended Trips",
+//                style = MaterialTheme.typography.titleMedium,
+//                fontWeight = FontWeight.Bold
+//            )
+//
+//            Text(
+//                text = "Based on your favorite activities",
+//                style = MaterialTheme.typography.bodyMedium,
+//                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
+//                modifier = Modifier.padding(bottom = 16.dp)
+//            )
         }
 
         // 사용자 추천 여행지들
@@ -251,7 +128,7 @@ fun HomeScreen(
 //            RecommendedTripItem(trip = trip)
 //            Spacer(modifier = Modifier.height(8.dp))
 //        }
-    }
+//    }
 }
 
 @Composable

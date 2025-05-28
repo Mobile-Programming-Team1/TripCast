@@ -8,6 +8,7 @@ package com.example.tripcast
 //import com.example.tripcast.ui.screens.WeatherPreferencesScreen
 //import com.example.tripcast.ui.theme.tripcastTheme
 //import com.example.tripcast.ui.screens.ExploreScreen
+
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -22,11 +23,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-
 import androidx.core.content.ContextCompat
-
 import androidx.lifecycle.viewmodel.compose.viewModel
-
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -35,6 +33,7 @@ import com.example.tripcast.ui.components.BottomNavBar
 import com.example.tripcast.ui.screens.CalendarScreen
 import com.example.tripcast.ui.screens.CheckOverallScreen
 import com.example.tripcast.ui.screens.HomeScreen
+import com.example.tripcast.ui.screens.PreferenceScreen
 import com.example.tripcast.ui.screens.SearchDestinationScreen
 import com.example.tripcast.ui.screens.SelectDatesScreen
 import com.example.tripcast.ui.screens.SettingScreen
@@ -105,8 +104,8 @@ fun TripcastApp() {
             BottomNavBar(
                 selectedTab = when (navController.currentBackStackEntryAsState().value?.destination?.route) {
                     "home" -> 0
-                    "trips", "calendar", "select_dates", "check_weather", "preferences" -> 1
-                    "setting", "explore" -> 2
+                    "search", "calendar", "select_dates", "check_overall", "preferences" -> 1
+                    "preference" -> 2
                     else -> 0
                 },
                 onTabSelected = { index ->
@@ -117,8 +116,8 @@ fun TripcastApp() {
                         1 -> navController.navigate("calendar") {
                             popUpTo("calendar")
                         }
-                        2 -> navController.navigate("setting") {
-                            popUpTo("setting")
+                        2 -> navController.navigate("preference") {
+                            popUpTo("preference")
                         }
                     }
                 }
@@ -139,7 +138,8 @@ fun TripcastApp() {
             composable("calendar") {
                 CalendarScreen(
                     viewModel = myTripViewModel,
-                    onNavigateToSearch = { navController.navigate("search") }
+                    onNavigateToSearch = { navController.navigate("search") },
+                    onNavigateToPrev = {navController.popBackStack()}
                 )
             }
             composable("setting") {
@@ -150,26 +150,27 @@ fun TripcastApp() {
 
                 SearchDestinationScreen(
                     viewModel = myTripViewModel,
-                    onNavigateToSelectDates = {navController.navigate("select_dates") }
+                    onNavigateToSelectDates = {navController.navigate("select_dates") },
+                    onNavigateToPrev = {navController.popBackStack()}
                 )
             }
             composable("select_dates") {
                 SelectDatesScreen(
                     viewModel = myTripViewModel,
-                    onNavigateToCheckOverall = { navController.navigate("check_overall") }
+                    onNavigateToCheckOverall = { navController.navigate("check_overall") },
+                    onNavigateToPrev = {navController.popBackStack()}
                 )
             }
             composable("check_overall") {
                 CheckOverallScreen(
                     viewModel = myTripViewModel,
-                    onNavigateToPreferences = { navController.navigate("home") }
+                    onNavigateToPreferences = { navController.navigate("home") },
+                    onNavigateToPrev = {navController.popBackStack()}
                 )
             }
-//            composable("preferences") {
-//                WeatherPreferencesScreen(
-//                    onGetRecommendations = { /* Handle recommendations */ }
-//                )
-//            }
+            composable("preference") {
+                PreferenceScreen {  }
+            }
 
         }
     }
