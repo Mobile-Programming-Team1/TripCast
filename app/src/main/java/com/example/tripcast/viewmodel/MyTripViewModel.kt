@@ -19,7 +19,6 @@ class MyTripViewModel : ViewModel() {
                 location = location,
                 weather = "",
                 temperature = "",
-                UV = "",
                 airQuality = ""
             )
         )
@@ -40,7 +39,6 @@ class MyTripViewModel : ViewModel() {
                 endDate = endDate ?: last.endDate,
                 weather = weather ?: last.weather,
                 temperature = temperature ?: last.temperature,
-                UV = UV ?: last.UV,
                 airQuality = airQuality ?: last.airQuality
             )
             _myTripList[_myTripList.lastIndex] = updated
@@ -64,7 +62,6 @@ class MyTripViewModel : ViewModel() {
                     location = it.destination,
                     weather = if (it.weather.isNotEmpty()) it.weather.joinToString { w -> w.condition } else "Unknown",
                     temperature = "",
-                    UV = "",
                     airQuality = ""
                 )
             }

@@ -18,7 +18,7 @@ fun BottomNavBar(
     val items = listOf(
         NavItem("Home", R.drawable.baseline_home_24, R.drawable.outline_home_24),
         NavItem("Trips", R.drawable.baseline_explore_24, R.drawable.outline_explore_24),
-        NavItem("Settings", R.drawable.baseline_settings_24, R.drawable.outline_settings_24)
+        NavItem("Recommend", R.drawable.baseline_thumb_up_alt_24, R.drawable.baseline_thumb_up_off_alt_24)
     )
 
     NavigationBar(

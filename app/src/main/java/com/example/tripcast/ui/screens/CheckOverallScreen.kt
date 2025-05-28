@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Button
@@ -28,8 +30,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.tripcast.R
-import com.example.tripcast.firebase.TripSaver
 import com.example.tripcast.firebase.DailyWeather
+import com.example.tripcast.firebase.TripSaver
 import com.example.tripcast.util.getWeatherInfo
 import com.example.tripcast.viewmodel.MyTripViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -39,21 +41,23 @@ import java.time.LocalDate
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -> Unit) {
+fun CheckOverallScreen(viewModel: MyTripViewModel, onNavigateToPreferences: () -> Unit, onNavigateToPrev: () -> Unit) {
     var tripitem = viewModel.myTripList.last()
     val weatherInfo = remember {
         getWeatherInfo(tripitem.startDate, tripitem.endDate, tripitem.location)
     }
+    val scrollState = rememberScrollState()
     
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
+            .verticalScroll(scrollState)
     ) {
         TopAppBar(
             title = { Text("Check Weather Info") },
             navigationIcon = {
-                IconButton(onClick = { /* Navigate back */ }) {
+                IconButton(onClick = { onNavigateToPrev() }) {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowLeft,
                         contentDescription = "Back"

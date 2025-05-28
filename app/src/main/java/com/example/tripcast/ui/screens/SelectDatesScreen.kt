@@ -35,7 +35,8 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun SelectDatesScreen(
     viewModel: MyTripViewModel,
-    onNavigateToCheckOverall: () -> Unit
+    onNavigateToCheckOverall: () -> Unit,
+    onNavigateToPrev: () -> Unit
 ) {
     val startDate = LocalDate.of(2025, 2, 1)
     val endDate = LocalDate.of(2025, 2, 3)
@@ -56,7 +57,7 @@ fun SelectDatesScreen(
         TopAppBar(
             title = { Text("Select Travel Dates") },
             navigationIcon = {
-                IconButton(onClick = { /* Navigate back */ }) {
+                IconButton(onClick = { onNavigateToPrev() }) {
                     Icon(
                         imageVector = Icons.Default.KeyboardArrowLeft,
                         contentDescription = "Back"
