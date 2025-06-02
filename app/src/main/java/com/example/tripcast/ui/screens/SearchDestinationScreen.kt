@@ -80,7 +80,7 @@ fun SearchDestinationScreen(
             .padding(16.dp)
     ) {
         TopAppBar(
-            title = { Text("Search Destination") },
+            title = { Text("목적지 검색") },
             navigationIcon = {
                 IconButton(onClick = { onNavigateToPrev() }) {
                     Icon(
@@ -92,7 +92,7 @@ fun SearchDestinationScreen(
         )
 
         Text(
-            text = "Where to?",
+            text = "어디로 떠나시나요?",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
@@ -108,7 +108,7 @@ fun SearchDestinationScreen(
                 },
                 modifier = Modifier
                     .fillMaxWidth(),
-                placeholder = { Text("Search for a city or airport") },
+                placeholder = { Text("도시 이름을 입력하세요") },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.Search,
@@ -171,7 +171,7 @@ fun SearchDestinationScreen(
                       },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Next")
+            Text("다음")
         }
     }
 }

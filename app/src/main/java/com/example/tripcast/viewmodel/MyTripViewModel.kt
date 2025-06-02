@@ -24,6 +24,10 @@ class MyTripViewModel : ViewModel() {
         )
     }
 
+    fun removeTrip(trip: Trip) {
+        _myTripList.remove(trip)
+    }
+
     fun updateLastTrip(
         startDate: String? = null,
         endDate: String? = null,
