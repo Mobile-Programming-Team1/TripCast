@@ -16,9 +16,9 @@ fun BottomNavBar(
     onTabSelected: (Int) -> Unit = {}
 ) {
     val items = listOf(
-        NavItem("Home", R.drawable.baseline_home_24, R.drawable.outline_home_24),
-        NavItem("Trips", R.drawable.baseline_explore_24, R.drawable.outline_explore_24),
-        NavItem("Recommend", R.drawable.baseline_thumb_up_alt_24, R.drawable.baseline_thumb_up_off_alt_24)
+        NavItem("홈", R.drawable.baseline_home_24, R.drawable.outline_home_24),
+        NavItem("여행", R.drawable.baseline_explore_24, R.drawable.outline_explore_24),
+        NavItem("추천", R.drawable.baseline_thumb_up_alt_24, R.drawable.baseline_thumb_up_off_alt_24)
     )
 
     NavigationBar(

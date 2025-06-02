@@ -169,7 +169,7 @@ fun TripcastApp() {
                 )
             }
             composable("preference") {
-                PreferenceScreen {  }
+                PreferenceScreen()
             }
 
         }

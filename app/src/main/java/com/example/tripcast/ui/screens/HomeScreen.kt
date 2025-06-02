@@ -1,6 +1,6 @@
 package com.example.tripcast.ui.screens
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,11 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -58,7 +57,7 @@ fun HomeScreen(
             ) {
                 Box {
                     Image(
-                        painter = painterResource(id = R.drawable.palmer),
+                        painter = painterResource(id = R.drawable.worldtour),
                         contentDescription = "City Aerial View",
                         modifier = Modifier.fillMaxSize(),
                         contentScale = ContentScale.Crop
@@ -69,13 +68,13 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "My Trips",
+                text = "나의 여행 계획",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold
             )
 
             Text(
-                text = "Plan your trips based on weather",
+                text = "날씨에 기반한 여행계획을 세우세요!",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                 modifier = Modifier.padding(bottom = 16.dp)
@@ -83,70 +82,22 @@ fun HomeScreen(
         }
         // 내 일정들
         items(viewModel.myTripList) { trip ->
-            TripItem(trip = trip)
+            TripItem(trip = trip, onDelete = { viewModel.removeTrip(trip) })
             Spacer(modifier = Modifier.height(8.dp))
         }
 
-//        item {
-//            Spacer(modifier = Modifier.height(24.dp))
-//
-//            Card(
-//                modifier = Modifier
-//                    .fillMaxWidth()
-//                    .height(120.dp),
-//                shape = RoundedCornerShape(12.dp),
-//                elevation = CardDefaults.cardElevation(defaultElevation = 4.dp)
-//            ) {
-//                Box {
-//                    Image(
-//                        painter = painterResource(id = R.drawable.gusto),
-//                        contentDescription = "Travel Gear",
-//                        modifier = Modifier.fillMaxSize(),
-//                        contentScale = ContentScale.Crop
-//                    )
-//                }
-//            }
-//
-//            Spacer(modifier = Modifier.height(16.dp))
-
-//            Text(
-//                text = "Recommended Trips",
-//                style = MaterialTheme.typography.titleMedium,
-//                fontWeight = FontWeight.Bold
-//            )
-//
-//            Text(
-//                text = "Based on your favorite activities",
-//                style = MaterialTheme.typography.bodyMedium,
-//                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
-//                modifier = Modifier.padding(bottom = 16.dp)
-//            )
-        }
-
-        // 사용자 추천 여행지들
-//        items(recommendedTrips) { trip ->
-//            RecommendedTripItem(trip = trip)
-//            Spacer(modifier = Modifier.height(8.dp))
-//        }
-//    }
+    }
 }
 
 @Composable
-fun TripItem(trip: Trip) {
+fun TripItem(trip: Trip, onDelete: (() -> Unit)? = null) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Box(
-            modifier = Modifier
-                .size(8.dp)
-                .background(MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(4.dp))
-        )
-        
-        Spacer(modifier = Modifier.width(8.dp))
-        
         Column {
             Text(
                 text = trip.weather,
@@ -166,43 +117,49 @@ fun TripItem(trip: Trip) {
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
             )
         }
-    }
-}
 
-@Composable
-fun RecommendedTripItem(trip: Trip) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Box(
-            modifier = Modifier
-                .size(8.dp)
-                .background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(4.dp))
-        )
-        
-        Spacer(modifier = Modifier.width(8.dp))
-        
-        Column {
-            Text(
-                text = trip.weather,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-            )
-            
-            Text(
-                text = trip.location,
-                style = MaterialTheme.typography.bodyLarge,
-                fontWeight = FontWeight.SemiBold
-            )
-            
-            Text(
-                text = trip.location,
-                style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-            )
+        if (onDelete != null) {
+            Button(onClick = onDelete) {
+                Text("삭제")
+            }
         }
     }
 }
+
+//@Composable
+//fun RecommendedTripItem(trip: Trip) {
+//    Row(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .padding(vertical = 8.dp),
+//        verticalAlignment = Alignment.CenterVertically
+//    ) {
+//        Box(
+//            modifier = Modifier
+//                .size(8.dp)
+//                .background(MaterialTheme.colorScheme.secondary, shape = RoundedCornerShape(4.dp))
+//        )
+//
+//        Spacer(modifier = Modifier.width(8.dp))
+//
+//        Column {
+//            Text(
+//                text = trip.weather,
+//                style = MaterialTheme.typography.bodySmall,
+//                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+//            )
+//
+//            Text(
+//                text = trip.location,
+//                style = MaterialTheme.typography.bodyLarge,
+//                fontWeight = FontWeight.SemiBold
+//            )
+//
+//            Text(
+//                text = trip.location,
+//                style = MaterialTheme.typography.bodySmall,
+//                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+//            )
+//        }
+//    }
+//}

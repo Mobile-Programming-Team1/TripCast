@@ -38,8 +38,8 @@ fun SelectDatesScreen(
     onNavigateToCheckOverall: () -> Unit,
     onNavigateToPrev: () -> Unit
 ) {
-    val startDate = LocalDate.of(2025, 2, 1)
-    val endDate = LocalDate.of(2025, 2, 3)
+    val startDate = LocalDate.now()
+    val endDate = LocalDate.now()
     val formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd")
     var selectedStartDate by remember { mutableStateOf(startDate) }
     var selectedEndDate by remember { mutableStateOf(endDate) }
@@ -55,7 +55,7 @@ fun SelectDatesScreen(
             .verticalScroll(scrollState)
     ) {
         TopAppBar(
-            title = { Text("Select Travel Dates") },
+            title = { Text("일정 입력") },
             navigationIcon = {
                 IconButton(onClick = { onNavigateToPrev() }) {
                     Icon(
@@ -72,7 +72,7 @@ fun SelectDatesScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Traveling Dates",
+            text = "여행 일정",
             style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Bold
         )
@@ -105,7 +105,7 @@ fun SelectDatesScreen(
             enabled = enableNextButton
 
         ) {
-            Text("Next")
+            Text("다음")
         }
     }
 }
