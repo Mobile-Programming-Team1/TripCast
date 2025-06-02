@@ -1,9 +1,12 @@
 package com.example.tripcast.ui.screens
 
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -24,6 +27,7 @@ import com.example.tripcast.ui.components.CalendarView
 import com.example.tripcast.util.CalendarUtil
 import com.example.tripcast.viewmodel.MyTripViewModel
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -34,11 +38,11 @@ fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(4.dp)
     ) {
         item {
             TopAppBar(
-                title = { Text("Calendar") },
+                title = { Text("캘린더") },
                 navigationIcon = {
                     IconButton(onClick = { onNavigateToPrev() }) {
                         Icon(
@@ -54,6 +58,16 @@ fun CalendarScreen(modifier: Modifier = Modifier, onNavigateToSearch: () -> Unit
                 initialDate = selectedDate,
                 onDateSelected = { selectedDate = it }
             )
+        }
+        items(viewModel.myTripList) { trip ->
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val start = LocalDate.parse(trip.startDate, formatter)
+            val end = LocalDate.parse(trip.endDate, formatter)
+            if (!selectedDate.isBefore(start) && !selectedDate.isAfter(end)) {
+                // now ∈ [start, end]
+                TripItem(trip = trip)
+                Spacer(modifier = Modifier.height(8.dp))
+            }
         }
 
         // ✅ 캘린더 등록 버튼

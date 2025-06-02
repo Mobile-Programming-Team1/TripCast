@@ -1,5 +1,6 @@
 package com.example.tripcast.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,27 +26,31 @@ import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.tripcast.R
 import com.example.tripcast.ui.components.CalendarView
+import com.example.tripcast.util.getRecommendInfo
+import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 data class WeatherPreference(
     val name: String,
@@ -61,88 +66,108 @@ data class Destination(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PreferenceScreen(
-    onGetRecommendations: () -> Unit
-) {
+fun PreferenceScreen() {
+    var isLoading by remember { mutableStateOf(false) }
+
     var weatherPreferences by remember {
         mutableStateOf(
             listOf(
-                WeatherPreference("Sunny", true),
-                WeatherPreference("Warm", false),
-                WeatherPreference("Dry", false),
-                WeatherPreference("Mild", false),
-                WeatherPreference("Cool", false),
-                WeatherPreference("Cold", false)
+                WeatherPreference("Thunderstorm", false),
+                WeatherPreference("Drizzle", false),
+                WeatherPreference("Rain", false),
+                WeatherPreference("Snow", false),
+                WeatherPreference("Mist", false),
+                WeatherPreference("Smoke", false),
+                WeatherPreference("Haze", false),
+                WeatherPreference("Dust", false),
+                WeatherPreference("Fog", false),
+                WeatherPreference("Sand", false),
+                WeatherPreference("Ash", false),
+                WeatherPreference("Squall", false),
+                WeatherPreference("Tornado", false),
+                WeatherPreference("Clear", false),
+                WeatherPreference("Clouds", false)
             )
         )
     }
 
-    val destinations = listOf(
-        Destination("Carmel-by-the-sea", "Mostly Sunny", "68°", R.drawable.gusto),
-        Destination("Pacific Grove", "Mostly Sunny", "72°", R.drawable.palmer),
-        Destination("Monterey", "Mostly Sunny", "71°", R.drawable.gusto)
-    )
+    val coroutineScope = rememberCoroutineScope()
+
+    var selectedDate by remember { mutableStateOf(LocalDate.now()) }
+    var selectedWeather by remember { mutableStateOf("") }
+    
+    // 추천 여행지 리스트
+    var recommendations by remember { mutableStateOf<List<String>>(emptyList()) }
+    // 스크롤 상태 변수
+    val scrollState = rememberScrollState()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-            .verticalScroll(rememberScrollState())
+            .verticalScroll(scrollState)
     ) {
-        TopAppBar(
-            title = { Text("Weather Preferences") },
-            navigationIcon = {
-                IconButton(onClick = { /* Navigate back */ }) {
-                    Icon(
-                        imageVector = Icons.Default.KeyboardArrowLeft,
-                        contentDescription = "Back"
-                    )
-                }
-            }
-        )
-
+//        TopAppBar(
+//            title = { Text("선호 날씨에 따른 여행지 추천") },
+////            navigationIcon = {
+////                IconButton(onClick = { /* Navigate back */ }) {
+////                    Icon(
+////                        imageVector = Icons.Default.KeyboardArrowLeft,
+////                        contentDescription = "Back"
+////                    )
+////                }
+////            }
+//        )
         Text(
-            text = "What's your ideal weather?",
+            text = "선호 날씨에 따른 여행지 추천",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            weatherPreferences.take(3).forEach { preference ->
-                WeatherPreferenceItem(
-                    preference = preference,
-                    onClick = {
-                        weatherPreferences = weatherPreferences.map {
-                            if (it.name == preference.name) it.copy(isSelected = !it.isSelected)
-                            else it
+        Text(
+            text = "당신이 좋아하는 날씨를 터치하세요!",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Light,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
+
+        weatherPreferences
+            .chunked(5) // 리스트를 5개씩 끊어서 List<List<WeatherPreference>> 형태로 만듦
+            .forEach { rowList ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    rowList.forEach { preference ->
+                        WeatherPreferenceItem(
+                            preference = preference,
+                            onClick = {
+                                // 클릭하면 해당 항목의 isSelected 토글
+                                weatherPreferences = weatherPreferences.map {
+                                    if (it.name == preference.name) {
+                                        it.copy(isSelected = true)
+                                    } else {
+                                        it.copy(isSelected = false)
+                                    }
+                                }
+                                selectedWeather = preference.name
+                                Log.d("selectedWeather", selectedWeather)
+                            }
+                        )
+                    }
+                    // 만약 마지막 행에 5개 미만 남았을 경우 빈 칸 메우기
+                    if (rowList.size < 5) {
+                        // 예: rowList.size == 3이면 2개의 Spacer를 추가해서 간격 맞추기
+                        repeat(5 - rowList.size) {
+                            Spacer(modifier = Modifier.width(60.dp)) // 아이콘 크기와 동일한 폭
                         }
                     }
-                )
+                }
             }
-        }
 
-        Spacer(modifier = Modifier.height(16.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly
-        ) {
-            weatherPreferences.takeLast(3).forEach { preference ->
-                WeatherPreferenceItem(
-                    preference = preference,
-                    onClick = {
-                        weatherPreferences = weatherPreferences.map {
-                            if (it.name == preference.name) it.copy(isSelected = !it.isSelected)
-                            else it
-                        }
-                    }
-                )
-            }
-        }
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -173,30 +198,63 @@ fun PreferenceScreen(
             }
         }
 
-        CalendarView()
+        CalendarView(onDateSelected = {date -> selectedDate = date
+            Log.d("selectedDate", selectedDate.toString())
+        })
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = onGetRecommendations,
+            onClick = {
+                coroutineScope.launch {
+                    isLoading = true
+                    launch {
+                        kotlinx.coroutines.delay(300)
+                        scrollState.animateScrollTo(scrollState.maxValue)
+                    }
+                    val resultList: List<String> = getRecommendInfo(
+                        date = selectedDate.toString(),
+                        weather = selectedWeather
+                    )
+                    isLoading = false
+                    recommendations = resultList
+                    Log.d("RecommendationResult", recommendations.toString())
+                    launch {
+                        kotlinx.coroutines.delay(300)
+                        scrollState.animateScrollTo(scrollState.maxValue)
+                    }
+                }
+            },
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Get Recommendations")
+            Text("추천받기")
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
-            text = "Recommended Destinations",
+            text = "추천 여행지 목록",
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
 
-        destinations.forEach { destination ->
-            DestinationRecommendationItem(destination = destination)
-            Spacer(modifier = Modifier.height(16.dp))
+        if(isLoading) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        } else {
+            recommendations.forEach { destination ->
+                DestinationRecommendationItem(destination = destination)
+                Spacer(modifier = Modifier.height(16.dp))
+            }
         }
+
+
     }
 }
 
@@ -235,7 +293,7 @@ fun WeatherPreferenceItem(
         Spacer(modifier = Modifier.height(4.dp))
 
         Text(
-            text = preference.name,
+            text = if (preference.name != "Thunderstorm") preference.name else "Thunder\n  storm" ,
             style = MaterialTheme.typography.bodyMedium
         )
     }
@@ -243,8 +301,13 @@ fun WeatherPreferenceItem(
 
 @Composable
 fun DestinationRecommendationItem(
-    destination: Destination
+    destination: String
 ) {
+    val context = LocalContext.current
+    val resId = remember(destination) {
+        context.resources.getIdentifier(destination.lowercase(), "drawable", context.packageName)
+    }
+
     Card(
         modifier = Modifier.fillMaxWidth(),
         elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
@@ -255,14 +318,18 @@ fun DestinationRecommendationItem(
                 .fillMaxWidth()
                 .height(80.dp)
         ) {
-            Image(
-                painter = painterResource(id = destination.imageResId),
-                contentDescription = destination.name,
-                modifier = Modifier
-                    .width(120.dp)
-                    .height(80.dp),
-                contentScale = ContentScale.Crop
-            )
+            if (resId != 0) {
+                Image(
+                    painter = painterResource(id = resId),
+                    contentDescription = destination,
+                    modifier = Modifier
+                        .width(120.dp)
+                        .height(80.dp),
+                    contentScale = ContentScale.Crop
+                )
+            } else {
+                Text("이미지 없음: $destination")
+            }
 
             Column(
                 modifier = Modifier
@@ -271,16 +338,16 @@ fun DestinationRecommendationItem(
                 verticalArrangement = Arrangement.Center
             ) {
                 Text(
-                    text = destination.name,
+                    text = destination,
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
 
-                Text(
-                    text = "${destination.weather}, ${destination.temperature}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                )
+//                Text(
+//                    text = "${weatherS}, ${destination.temperature}",
+//                    style = MaterialTheme.typography.bodyMedium,
+//                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+//                )
             }
         }
     }
