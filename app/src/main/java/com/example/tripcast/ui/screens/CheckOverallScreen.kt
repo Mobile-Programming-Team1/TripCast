@@ -159,13 +159,19 @@ fun CheckOverallScreen(
                 ForecastItem(
                     day = item.date,
                     weatherCondition = when (item.weather.toString()) {
-                        "CLEAR" -> "mostly clear"
-                        "CLOUDS" -> "it is cloudy"
-                        "RAIN" -> "it is rainy"
-                        "SNOW" -> "it is snowy"
-                        "THUNDERSTORM" -> "thunderstorm"
-                        "DRIZZLE" -> "drizzle"
-                        else -> "dangerous weather"
+                        "CLEAR" -> "화창합니다!"
+                        "CLOUDS" -> "구름이 많습니다!"
+                        "RAIN" -> "비가 내립니다!"
+                        "SNOW" -> "눈이 옵니다!"
+                        "THUNDERSTORM" -> "천둥번개가 칩니다!"
+                        "DRIZZLE" -> "약한 비가 내립니다!"
+                        "MIST", "FOG", "HAZE" -> "안개가 자욱합니다!"
+                        "SMOKE" -> "연기가 많습니다!"
+                        "DUST", "SAND" -> "모래먼지가 많습니다!"
+                        "ASH" -> "재가 날립니다!"
+                        "SQUALL" -> "돌풍이 붑니다!"
+                        "TORNADO" -> "토네이도가 칩니다!"
+                        else -> "알 수 없는 날씨"
                     },
                     weatherIcon = when (item.weather.toString()) {
                         "CLEAR" -> R.drawable.ic_sunny
