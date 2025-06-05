@@ -66,6 +66,7 @@ fun SearchDestinationScreen(
         try {
             while (true) {
                 val fetched = getAvailableLocation()
+
                 allDestinations = fetched
                 delay(1000000)
             }

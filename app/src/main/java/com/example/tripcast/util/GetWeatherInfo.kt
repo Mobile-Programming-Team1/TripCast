@@ -54,6 +54,7 @@ suspend fun getWeatherInfo(startDate:String, endDate:String, location:String): L
                 val dateStr = date.format(inputFormatter)
 
                 val forecastItem = forecastArray[i].asJsonObject
+
                 val weatherStr = forecastItem.get("weather").asString.uppercase()  // ← 여기서 소문자 → 대문자 변환
 
                 val weatherEnum = try {
@@ -70,7 +71,6 @@ suspend fun getWeatherInfo(startDate:String, endDate:String, location:String): L
     } catch(e: IOException) {
         Log.e("getWeatherInfo", "Network error: ${e.message}", e)
     }
-
 
     return@withContext weatherList
 }

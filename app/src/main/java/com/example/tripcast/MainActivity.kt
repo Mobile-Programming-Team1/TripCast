@@ -29,6 +29,13 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
+import androidx.work.ExistingWorkPolicy
+import androidx.work.ExistingPeriodicWorkPolicy
+import java.util.concurrent.TimeUnit
+import com.example.tripcast.worker.WeatherCheckWorker
 import com.example.tripcast.ui.components.BottomNavBar
 import com.example.tripcast.ui.screens.CalendarScreen
 import com.example.tripcast.ui.screens.CheckOverallScreen
@@ -51,6 +58,29 @@ class MainActivity : ComponentActivity() {
         }
 
         requestCalendarPermissions()
+        // FCM 토큰을 강제로 갱신 및 로그 출력
+        MyFirebaseMessagingService.fetchAndLogToken()
+
+        // 앱 실행 시 즉시 한 번 날씨 체크를 실행하는 OneTimeWorkRequest
+        val oneTimeRequest = OneTimeWorkRequestBuilder<WeatherCheckWorker>()
+            .build()
+        WorkManager.getInstance(this).enqueueUniqueWork(
+            "WeatherCheckOneTime",
+            ExistingWorkPolicy.REPLACE,
+            oneTimeRequest
+        )
+
+        // 이후 15분마다 반복 실행하도록 PeriodicWorkRequest 등록
+        val periodicRequest = PeriodicWorkRequestBuilder<WeatherCheckWorker>(
+            15, TimeUnit.MINUTES  // WorkManager의 최소 반복 주기는 15분입니다.
+        )
+            .setInitialDelay(15, TimeUnit.MINUTES) // 앱 실행 후 15분 뒤 첫 실행
+            .build()
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "WeatherCheckPeriodic",
+            ExistingPeriodicWorkPolicy.KEEP,
+            periodicRequest
+        )
 
         setContent {
             tripcastTheme {
@@ -58,7 +88,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyFirebaseMessagingService.fetchAndLogToken()
                     TripcastApp()
                 }
             }

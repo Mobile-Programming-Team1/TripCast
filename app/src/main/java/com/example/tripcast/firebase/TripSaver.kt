@@ -74,4 +74,40 @@ object TripSaver {
             emptyList()
         }
     }
+
+    fun deleteTripFromFirebase(
+        startDate: String,
+        endDate: String,
+        location: String,
+        onComplete: (Boolean) -> Unit
+    ) {
+        db.collection("plans")
+            .whereEqualTo("startDate", startDate)
+            .whereEqualTo("endDate", endDate)
+            .whereEqualTo("destination", location)
+            .get()
+            .addOnSuccessListener { documents ->
+                Log.d("TripSaver", "삭제 시도: ${documents.size()}개 문서 발견")
+                for (document in documents) {
+                    Log.d("TripSaver", "삭제 대상 문서 ID: ${document.id}")
+                    db.collection("plans").document(document.id)
+                        .delete()
+                        .addOnSuccessListener {
+                            Log.d("TripSaver", "여행 삭제 완료")
+                            onComplete(true)
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("TripSaver", "삭제 실패", e)
+                            onComplete(false)
+                        }
+                }
+                if (documents.isEmpty) {
+                    onComplete(false)
+                }
+            }
+            .addOnFailureListener { e ->
+                Log.e("TripSaver", "삭제용 문서 조회 실패", e)
+                onComplete(false)
+            }
+    }
 }
