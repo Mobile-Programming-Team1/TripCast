@@ -60,12 +60,16 @@ fun SearchDestinationScreen(
         it.contains(searchQuery, ignoreCase = true)
     }
 
+    Log.d("SearchDestination", "searchQuery = $searchQuery")
+    Log.d("SearchDestination", "filtered = $filteredDestinations")
+
     Log.d("Dropdown", "Query: $searchQuery, Matched: ${filteredDestinations.map { it }}")
 
     LaunchedEffect(Unit) {
         try {
             while (true) {
                 val fetched = getAvailableLocation()
+                Log.d("SearchDestination", "fetched = $fetched")
                 allDestinations = fetched
                 delay(1000000)
             }

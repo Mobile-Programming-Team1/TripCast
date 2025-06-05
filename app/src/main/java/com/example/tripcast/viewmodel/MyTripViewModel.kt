@@ -1,5 +1,6 @@
 package com.example.tripcast.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -25,7 +26,18 @@ class MyTripViewModel : ViewModel() {
     }
 
     fun removeTrip(trip: Trip) {
-        _myTripList.remove(trip)
+        TripSaver.deleteTripFromFirebase(
+            startDate = trip.startDate,
+            endDate = trip.endDate,
+            location = trip.location
+        ) { success ->
+            if (success) {
+                _myTripList.remove(trip)
+                Log.d("MyTripViewModel", "removeTrip 호출됨: ${trip.location}, ${trip.startDate}")
+            } else {
+                android.util.Log.e("MyTripViewModel", "Firebase에서 삭제 실패")
+            }
+        }
     }
 
     fun updateLastTrip(

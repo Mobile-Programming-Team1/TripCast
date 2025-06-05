@@ -33,7 +33,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                 }
             }
     }
-
+//바꿔야겠다
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
         val title = message.notification?.title ?: "TripCast 알림"
