@@ -27,7 +27,7 @@ suspend fun getWeatherInfo(startDate:String, endDate:String, location:String): L
     val endParam   = endLocal.format(outputFormatter)
 
     val client = OkHttpClient()
-    val url = "http://10.0.2.2:8000/weather" +
+    val url = "http://3.107.21.54:8000/weather" +
             "?city=${location}" +
             "&start_date=${startParam}" +
             "&end_date=${endParam}"

@@ -1,4 +1,3 @@
-// 파일: WeatherCheckWorker.kt
 package com.example.tripcast.worker
 
 import android.content.Context
@@ -92,11 +91,12 @@ class WeatherCheckWorker(
 
     /**
      * 외부 날씨 API 호출 함수.
-     * 예: localhost:8000/weather/?city=Seoul&start_date=20250605&end_date=20250605
+     * 예: 3.107.21.54:8000/weather/?city=Seoul&start_date=20250605&end_date=20250605
      */
     private fun getRealWeather(city: String, dateStr: String): String {
         return try {
-            val baseUrl = "http://10.0.2.2:8000/weather/"
+            // ✅ 서버 주소 변경: 로컬 → AWS
+            val baseUrl = "http://3.107.21.54:8000/weather/"
             val noHyphen = dateStr.replace("-", "")
             val url = "$baseUrl?city=${city}&start_date=$noHyphen&end_date=$noHyphen"
 

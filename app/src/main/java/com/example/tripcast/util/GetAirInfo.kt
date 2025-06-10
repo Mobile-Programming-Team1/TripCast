@@ -25,7 +25,7 @@ suspend fun getAirInfo(startDate:String, endDate:String, location:String) = with
     val endParam   = endLocal.format(outputFormatter)
 
     val client = OkHttpClient()
-    val url = "http://10.0.2.2:8000/air" +
+    val url = "http://3.107.21.54:8000/air" +
             "?city=${location}" +
             "&start_date=${startParam}" +
             "&end_date=${endParam}"

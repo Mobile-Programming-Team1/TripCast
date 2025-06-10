@@ -23,7 +23,7 @@ suspend fun getRecommendInfo(date:String, weather:String): List<String> = withCo
     val dateParam  = parsedDate.format(outputFormatter)
 
     val request = Request.Builder()
-        .url("http://10.0.2.2:8000/recommendation?weather=${weather}&date=${dateParam}")
+        .url("http://3.107.21.54:8000/recommendation?weather=${weather}&date=${dateParam}")
         .build()
 
     try {

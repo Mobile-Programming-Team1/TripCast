@@ -11,7 +11,7 @@ import java.io.IOException
 suspend fun getAvailableLocation():List<String> = withContext(Dispatchers.IO){
     val client = OkHttpClient()
     val request = Request.Builder()
-        .url("http://10.0.2.2:8000/cities")
+        .url("http://3.107.21.54:8000/cities")
         .build()
 
     try {

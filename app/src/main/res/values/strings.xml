@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">tripcast</string>
+    <string name="openweather_api_key">afad7c87ebd1b14f5287168defd8d921</string>
 </resources>
