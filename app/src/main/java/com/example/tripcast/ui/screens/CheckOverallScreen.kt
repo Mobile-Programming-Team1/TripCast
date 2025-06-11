@@ -192,11 +192,11 @@ fun CheckOverallScreen(
                         else -> R.drawable.gusto
                     },
                     airCondition = when (item.air) {
-                        1 -> "공기질 최악"
-                        2 -> "공기질 안좋음"
+                        1 -> "공기질 최상"
+                        2 -> "공기질 좋음"
                         3 -> "공기질 보통"
-                        4 -> "공기질 좋음"
-                        5 -> "공기질 최상"
+                        4 -> "공기질 별로"
+                        5 -> "공기질 최악"
                         else -> "정의되지 않음"
                     },
                     airIcon = when (item.air) {
