@@ -67,7 +67,10 @@ data class Destination(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PreferenceScreen() {
+    // 추천여행지 로딩/비로딩 상태 구분위한 상태변수
     var isLoading by remember { mutableStateOf(false) }
+    // 초기/여행지로딩완료 상태 구분위한 상태변수
+    var isLoaded by remember { mutableStateOf(false) }
 
     var weatherPreferences by remember {
         mutableStateOf(
@@ -107,17 +110,6 @@ fun PreferenceScreen() {
             .padding(16.dp)
             .verticalScroll(scrollState)
     ) {
-//        TopAppBar(
-//            title = { Text("선호 날씨에 따른 여행지 추천") },
-////            navigationIcon = {
-////                IconButton(onClick = { /* Navigate back */ }) {
-////                    Icon(
-////                        imageVector = Icons.Default.KeyboardArrowLeft,
-////                        contentDescription = "Back"
-////                    )
-////                }
-////            }
-//        )
         Text(
             text = "선호 날씨에 따른 여행지 추천",
             style = MaterialTheme.typography.titleLarge,
@@ -217,6 +209,7 @@ fun PreferenceScreen() {
                         weather = selectedWeather
                     )
                     isLoading = false
+                    isLoaded = true
                     recommendations = resultList
                     Log.d("RecommendationResult", recommendations.toString())
                     launch {
@@ -248,9 +241,13 @@ fun PreferenceScreen() {
                 CircularProgressIndicator()
             }
         } else {
-            recommendations.forEach { destination ->
-                DestinationRecommendationItem(destination = destination)
-                Spacer(modifier = Modifier.height(16.dp))
+            if(recommendations.isEmpty() && isLoaded) {
+                Text("조건에 해당하는 여행지가 존재하지 않습니다.")
+            } else {
+                recommendations.forEach { destination ->
+                    DestinationRecommendationItem(destination = destination)
+                    Spacer(modifier = Modifier.height(16.dp))
+                }
             }
         }
 
