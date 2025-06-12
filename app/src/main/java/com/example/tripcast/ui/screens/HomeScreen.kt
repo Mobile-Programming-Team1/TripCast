@@ -25,6 +25,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.tripcast.MyFirebaseMessagingService
 import com.example.tripcast.R
 import com.example.tripcast.model.Trip
 import com.example.tripcast.viewmodel.MyTripViewModel
@@ -33,8 +34,10 @@ import com.example.tripcast.viewmodel.MyTripViewModel
 fun HomeScreen(
     onNavigateToCalendar: () -> Unit, viewModel: MyTripViewModel
 ) {
-    LaunchedEffect(Unit) {
-        viewModel.loadTripsFromFirebase()
+    LaunchedEffect(MyFirebaseMessagingService.token) {
+        MyFirebaseMessagingService.token?.let { token ->
+            viewModel.loadTripsFromFirebase(token)
+        }
     }
     LazyColumn(
         modifier = Modifier

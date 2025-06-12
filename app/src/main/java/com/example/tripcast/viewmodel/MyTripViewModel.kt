@@ -4,6 +4,8 @@ import android.util.Log
 import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tripcast.MyFirebaseMessagingService
+import com.example.tripcast.MyFirebaseMessagingService.Companion.token
 import com.example.tripcast.firebase.TripSaver
 import com.example.tripcast.model.Trip
 import kotlinx.coroutines.launch
@@ -26,16 +28,19 @@ class MyTripViewModel : ViewModel() {
     }
 
     fun removeTrip(trip: Trip) {
-        TripSaver.deleteTripFromFirebase(
-            startDate = trip.startDate,
-            endDate = trip.endDate,
-            location = trip.location
-        ) { success ->
-            if (success) {
-                _myTripList.remove(trip)
-                Log.d("MyTripViewModel", "removeTrip 호출됨: ${trip.location}, ${trip.startDate}")
-            } else {
-                android.util.Log.e("MyTripViewModel", "Firebase에서 삭제 실패")
+        MyFirebaseMessagingService.token?.let { token ->
+            TripSaver.deleteTripFromFirebase(
+                startDate = trip.startDate,
+                endDate = trip.endDate,
+                location = trip.location,
+                userToken = token
+            ) { success ->
+                if (success) {
+                    _myTripList.remove(trip)
+                    Log.d("MyTripViewModel", "removeTrip 호출됨: ${trip.location}, ${trip.startDate}")
+                } else {
+                    android.util.Log.e("MyTripViewModel", "Firebase에서 삭제 실패")
+                }
             }
         }
     }
@@ -61,9 +66,9 @@ class MyTripViewModel : ViewModel() {
         }
     }
 
-    fun loadTripsFromFirebase() {
+    fun loadTripsFromFirebase(userToken: String) {
         viewModelScope.launch {
-            val tripsData = TripSaver.loadTrips()
+            val tripsData = TripSaver.loadTrips(userToken)
             android.util.Log.d("MyTripViewModel", "불러온 TripData 개수: ${tripsData.size}")
             tripsData.forEach {
                 android.util.Log.d(
@@ -78,7 +83,8 @@ class MyTripViewModel : ViewModel() {
                     location = it.destination,
                     weather = if (it.weather.isNotEmpty()) it.weather.joinToString { w -> w.condition } else "Unknown",
                     temperature = "",
-                    airQuality = ""
+                    airQuality = "",
+
                 )
             }
             _myTripList.clear()
