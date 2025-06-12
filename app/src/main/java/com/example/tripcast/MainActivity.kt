@@ -22,6 +22,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -60,27 +61,27 @@ class MainActivity : ComponentActivity() {
         requestCalendarPermissions()
         // FCM 토큰을 강제로 갱신 및 로그 출력
         MyFirebaseMessagingService.fetchAndLogToken()
-
-        // 앱 실행 시 즉시 한 번 날씨 체크를 실행하는 OneTimeWorkRequest
-        val oneTimeRequest = OneTimeWorkRequestBuilder<WeatherCheckWorker>()
-            .build()
-        WorkManager.getInstance(this).enqueueUniqueWork(
-            "WeatherCheckOneTime",
-            ExistingWorkPolicy.REPLACE,
-            oneTimeRequest
-        )
-
-        // 이후 15분마다 반복 실행하도록 PeriodicWorkRequest 등록
-        val periodicRequest = PeriodicWorkRequestBuilder<WeatherCheckWorker>(
-            15, TimeUnit.MINUTES  // WorkManager의 최소 반복 주기는 15분입니다.
-        )
-            .setInitialDelay(15, TimeUnit.MINUTES) // 앱 실행 후 15분 뒤 첫 실행
-            .build()
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "WeatherCheckPeriodic",
-            ExistingPeriodicWorkPolicy.KEEP,
-            periodicRequest
-        )
+//
+//        // 앱 실행 시 즉시 한 번 날씨 체크를 실행하는 OneTimeWorkRequest
+//        val oneTimeRequest = OneTimeWorkRequestBuilder<WeatherCheckWorker>()
+//            .build()
+//        WorkManager.getInstance(this).enqueueUniqueWork(
+//            "WeatherCheckOneTime",
+//            ExistingWorkPolicy.REPLACE,
+//            oneTimeRequest
+//        )
+//
+//        // 이후 15분마다 반복 실행하도록 PeriodicWorkRequest 등록
+//        val periodicRequest = PeriodicWorkRequestBuilder<WeatherCheckWorker>(
+//            15, TimeUnit.MINUTES  // WorkManager의 최소 반복 주기는 15분입니다.
+//        )
+//            .setInitialDelay(15, TimeUnit.MINUTES) // 앱 실행 후 15분 뒤 첫 실행
+//            .build()
+//        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+//            "WeatherCheckPeriodic",
+//            ExistingPeriodicWorkPolicy.KEEP,
+//            periodicRequest
+//        )
 
         setContent {
             tripcastTheme {
@@ -127,6 +128,19 @@ class MainActivity : ComponentActivity() {
 fun TripcastApp() {
     val navController = rememberNavController()
     var myTripViewModel : MyTripViewModel = viewModel()
+
+    // Launch effect to fetch FCM token on app start
+    LaunchedEffect(Unit) {
+        MyFirebaseMessagingService.fetchAndLogToken()
+    }
+
+    // Launch effect to observe token and load trips when available
+    LaunchedEffect(MyFirebaseMessagingService.token) {
+        MyFirebaseMessagingService.token?.let { token ->
+            myTripViewModel.loadTripsFromFirebase(token)
+        }
+    }
+
 
     Scaffold(
         bottomBar = {

@@ -8,7 +8,8 @@ import java.time.LocalDate
 
 data class DailyWeather(
     val date: String,
-    val condition: String
+    val condition: String,
+    val fineDust: Int
 )
 
 data class TripData(
@@ -20,29 +21,35 @@ data class TripData(
 
 object TripSaver {
     private val db = FirebaseFirestore.getInstance()
-
+    //여기수정
     suspend fun saveTrip(
         destination: String,
         startDate: LocalDate,
         endDate: LocalDate,
-        weatherList: List<DailyWeather>
+        weatherList: List<DailyWeather>,
+        userToken: String
     ) {
+        val sortedWeather = weatherList.sortedBy { it.date }
         val trip = mapOf(
             "destination" to destination,
             "startDate" to startDate.toString(),
             "endDate" to endDate.toString(),
-            "weather" to weatherList
-                .sortedBy { it.date } // ✅ 날짜 오름차순 정렬
-                .map {
+            "weather" to sortedWeather
+                .mapIndexed { index, it ->
                     mapOf(
                         "date" to it.date,
-                        "condition" to it.condition
-                    )
+                        "condition" to it.condition,
+                        "fineDust" to it.fineDust
+                    ) //여기수정
                 }
         )
 
         try {
-            db.collection("plans").add(trip).await()
+            db.collection("users") //여기 수정
+                .document(userToken)
+                .collection("trips")
+                .add(trip)
+                .await()
             Log.d("TripSaver", "여행 저장 완료")
         } catch (e: Exception) {
             Log.e("TripSaver", "저장 실패", e)
@@ -51,62 +58,72 @@ object TripSaver {
 
     }
 
-    suspend fun loadTrips(): List<TripData> {
+    suspend fun loadTrips(userToken: String): List<TripData> {
         return try {
-            val snapshot = FirebaseFirestore.getInstance()
-                .collection("plans")
+            val db = FirebaseFirestore.getInstance()
+            val snapshot = db.collection("users")
+                .document(userToken)
+                .collection("trips")
                 .get()
                 .await()
+
             Log.d("TripSaver", "불러온 trip 도큐먼트 수: ${snapshot.size()}")
+
             snapshot.documents.mapNotNull { doc ->
                 val destination = doc.getString("destination") ?: return@mapNotNull null
                 val startDate = doc.getString("startDate") ?: return@mapNotNull null
                 val endDate = doc.getString("endDate") ?: return@mapNotNull null
-                val weatherList = (doc["weather"] as? List<Map<String, String>>)?.map {
-                    DailyWeather(it["date"] ?: "", it["condition"] ?: "")
+                val weatherList = (doc["weather"] as? List<Map<String, Any?>>)?.map {
+                    DailyWeather(
+                        it["date"] as? String ?: "",
+                        it["condition"] as? String ?: "",
+                        (it["fineDust"] as? Long)?.toInt() ?: 0
+                    )
                 } ?: emptyList()
 
                 TripData(destination, startDate, endDate, weatherList)
             }
-
         } catch (e: Exception) {
-            Log.e("TripRepository", "불러오기 실패", e)
+            Log.e("TripSaver", "불러오기 실패", e)
             emptyList()
         }
     }
+
 
     fun deleteTripFromFirebase(
         startDate: String,
         endDate: String,
         location: String,
+        userToken: String,
         onComplete: (Boolean) -> Unit
     ) {
-        db.collection("plans")
+        db.collection("users")
+            .document(userToken)
+            .collection("trips")
             .whereEqualTo("startDate", startDate)
             .whereEqualTo("endDate", endDate)
             .whereEqualTo("destination", location)
             .get()
             .addOnSuccessListener { documents ->
-                Log.d("TripSaver", "삭제 시도: ${documents.size()}개 문서 발견")
-                for (document in documents) {
-                    Log.d("TripSaver", "삭제 대상 문서 ID: ${document.id}")
-                    db.collection("plans").document(document.id)
+                val firstDoc = documents.firstOrNull()
+                if (firstDoc != null) {
+                    db.collection("users")
+                        .document(userToken)
+                        .collection("trips")
+                        .document(firstDoc.id)
                         .delete()
                         .addOnSuccessListener {
-                            Log.d("TripSaver", "여행 삭제 완료")
                             onComplete(true)
                         }
-                        .addOnFailureListener { e ->
-                            Log.e("TripSaver", "삭제 실패", e)
+                        .addOnFailureListener {
                             onComplete(false)
                         }
-                }
-                if (documents.isEmpty) {
+                } else {
                     onComplete(false)
                 }
+                if (documents.isEmpty) onComplete(false)
             }
-            .addOnFailureListener { e ->
-                Log.e("TripSaver", "삭제용 문서 조회 실패", e)
+            .addOnFailureListener {
                 onComplete(false)
             }
     }

@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.tripcast.MyFirebaseMessagingService
 import com.example.tripcast.R
 import com.example.tripcast.firebase.DailyWeather
 import com.example.tripcast.firebase.TripSaver
@@ -56,6 +57,9 @@ fun CheckOverallScreen(
     onNavigateToPreferences: () -> Unit,
     onNavigateToPrev: () -> Unit
 ) {
+    LaunchedEffect(Unit) {
+        MyFirebaseMessagingService.fetchAndLogToken()
+    }
     var tripitem = viewModel.myTripList.last()
 //    val weatherInfo = remember {
 //        getWeatherInfo(tripitem.startDate, tripitem.endDate, tripitem.location)
@@ -222,15 +226,16 @@ fun CheckOverallScreen(
         Button(
             onClick = {
                 CoroutineScope(Dispatchers.IO).launch {
-                    val dailyWeatherList = weatherInfoList.map {
-                        DailyWeather(date = it.date, condition = it.weather.name)
+                    val dailyWeatherList = weatherInfoList.zip(airInfoList) { weather, air ->
+                        DailyWeather(date = weather.date, condition = weather.weather.name, fineDust = air)
                     }
                     TripSaver.saveTrip(
                         destination = tripitem.location,
                         startDate = LocalDate.parse(tripitem.startDate),
                         endDate = LocalDate.parse(tripitem.endDate),
-                        weatherList = dailyWeatherList
-                    )
+                        weatherList = dailyWeatherList,
+                        userToken = MyFirebaseMessagingService.token ?: "UNKNOWN"                    )
+
                 }
                 onNavigateToPreferences()
             },

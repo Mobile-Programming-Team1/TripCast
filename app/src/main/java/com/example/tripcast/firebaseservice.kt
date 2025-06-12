@@ -14,30 +14,22 @@ import com.google.firebase.firestore.FirebaseFirestore
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
-    override fun onNewToken(token: String) {
-        super.onNewToken(token)
-        Log.d("FCM", "FCM Token: $token")
-
-        // Firestore에 저장하려면 사용자 ID와 함께 저장 (예: plans 컬렉션에)
+    override fun onNewToken(newToken: String) {
+        token = newToken
+        Log.d("FCM", "FCM Token: $newToken")
         val db = FirebaseFirestore.getInstance()
-        val uid = "user123"  // 실제 로그인된 사용자 uid로 교체 필요
-
-        val updates = mapOf("token" to token)
-
-        db.collection("plans")
-            .whereEqualTo("uid", uid)
-            .get()
-            .addOnSuccessListener { querySnapshot ->
-                for (doc in querySnapshot.documents) {
-                    db.collection("plans").document(doc.id).update(updates)
-                }
-            }
+        db.collection("users").document(newToken).set(mapOf("token" to newToken))
     }
-//바꿔야겠다
+    //바꿔야겠다
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        val title = message.notification?.title ?: "TripCast 알림"
-        val body = message.notification?.body ?: "새로운 알림이 도착했습니다."
+        val title = message.notification?.title
+            ?: message.data["title"]
+            ?: "TripCast 알림"
+
+        val body = message.notification?.body
+            ?: message.data["body"]
+            ?: "새로운 알림이 도착했습니다."
 
         val channelId = "tripcast_channel"
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
@@ -64,11 +56,19 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     }
 
     companion object {
+        var token: String? = null
+
         fun fetchAndLogToken() {
             FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val token = task.result
-                    Log.d("FCM", "🔥 수동으로 받아온 FCM Token: $token")
+                    val resultToken = task.result
+                    token = resultToken
+                    Log.d("FCM", "🔥 수동으로 받아온 FCM Token: $resultToken")
+
+                    resultToken?.let {
+                        val db = FirebaseFirestore.getInstance()
+                        db.collection("users").document(it).set(mapOf("token" to it))
+                    }
                 } else {
                     Log.w("FCM", "FCM 토큰 가져오기 실패", task.exception)
                 }
