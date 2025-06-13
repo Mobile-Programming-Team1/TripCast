@@ -1,5 +1,10 @@
 package com.example.tripcast.ui.screens
 
+import android.Manifest
+import android.content.Intent
+import android.provider.CalendarContract
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,11 +32,10 @@ import androidx.compose.ui.unit.dp
 import com.example.tripcast.model.TripEvent
 import com.example.tripcast.ui.components.CalendarView
 import com.example.tripcast.ui.components.TripItem
-import com.example.tripcast.util.CalendarUtil
 import com.example.tripcast.viewmodel.MyTripViewModel
 import java.time.LocalDate
+import java.time.ZoneId
 import java.time.format.DateTimeFormatter
-import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -43,6 +47,29 @@ fun CalendarScreen(
 ) {
     val context = LocalContext.current
     var selectedDate by remember { mutableStateOf(LocalDate.now()) }
+
+    // 캘린더 권한 요청 런처
+    val permissionLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val writeCalendarGranted = permissions[Manifest.permission.WRITE_CALENDAR] ?: false
+        val readCalendarGranted = permissions[Manifest.permission.READ_CALENDAR] ?: false
+
+        if (writeCalendarGranted && readCalendarGranted) {
+            // 권한이 승인되면 현재 선택된 날짜의 여행들을 실시간으로 계산
+            val currentTripsOnSelectedDate = viewModel.myTripList.filter { trip ->
+                try {
+                    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+                    val start = LocalDate.parse(trip.startDate, formatter)
+                    val end = LocalDate.parse(trip.endDate, formatter)
+                    !selectedDate.isBefore(start) && !selectedDate.isAfter(end)
+                } catch (e: Exception) {
+                    false
+                }
+            }
+            registerToCalendar(context, currentTripsOnSelectedDate)
+        }
+    }
 
     // Trip 데이터를 TripEvent로 변환
     val tripEvents = viewModel.myTripList.mapIndexed { index, trip ->
@@ -59,7 +86,6 @@ fun CalendarScreen(
                 color = getTripColor(index)
             )
         } catch (e: Exception) {
-            // 날짜 파싱 실패 시 오늘 날짜로 기본값
             TripEvent(
                 id = index.toString(),
                 title = trip.location,
@@ -70,7 +96,7 @@ fun CalendarScreen(
         }
     }
 
-    // 선택된 날짜의 여행들 필터링 (Composable 밖에서 처리)
+    // 선택된 날짜의 여행들 필터링
     val tripsOnSelectedDate = viewModel.myTripList.filter { trip ->
         try {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
@@ -102,15 +128,13 @@ fun CalendarScreen(
         }
 
         item {
-            // 개선된 CalendarView 사용
             CalendarView(
                 initialDate = selectedDate,
-                tripEvents = tripEvents, // 여행 일정 전달
+                tripEvents = tripEvents,
                 onDateSelected = { selectedDate = it }
             )
         }
 
-        // 선택된 날짜의 여행 정보 헤더
         if (tripsOnSelectedDate.isNotEmpty()) {
             item {
                 Spacer(modifier = Modifier.height(16.dp))
@@ -121,7 +145,6 @@ fun CalendarScreen(
             }
         }
 
-        // 선택된 날짜의 여행 카드들
         items(tripsOnSelectedDate) { trip ->
             TripItem(
                 trip = trip,
@@ -130,7 +153,7 @@ fun CalendarScreen(
             Spacer(modifier = Modifier.height(8.dp))
         }
 
-        // 캘린더 등록 버튼
+        // 캘린더 등록 버튼 - 권한 요청 포함
         item {
             Spacer(modifier = Modifier.height(16.dp))
 
@@ -139,23 +162,12 @@ fun CalendarScreen(
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp),
                 onClick = {
-                    val startMillis = Calendar.getInstance().apply {
-                        set(
-                            selectedDate.year,
-                            selectedDate.monthValue - 1,
-                            selectedDate.dayOfMonth,
-                            10, 0
+                    // 권한 요청
+                    permissionLauncher.launch(
+                        arrayOf(
+                            Manifest.permission.READ_CALENDAR,
+                            Manifest.permission.WRITE_CALENDAR
                         )
-                    }.timeInMillis
-
-                    val endMillis = startMillis + 2 * 60 * 60 * 1000 // +2시간
-
-                    CalendarUtil.insertEvent(
-                        context = context,
-                        title = "TripCast 일정",
-                        description = "이 날은 여행이다!",
-                        startMillis = startMillis,
-                        endMillis = endMillis
                     )
                 }
             ) {
@@ -163,7 +175,6 @@ fun CalendarScreen(
             }
         }
 
-        // 일정 추가 버튼
         item {
             Spacer(modifier = Modifier.height(8.dp))
 
@@ -183,7 +194,38 @@ fun CalendarScreen(
     }
 }
 
-// 여행별로 다른 색상을 반환하는 함수
+// 캘린더 등록 함수 분리
+private fun registerToCalendar(context: android.content.Context, trips: List<com.example.tripcast.model.Trip>) {
+    trips.forEach { trip ->
+        try {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            val startDate = LocalDate.parse(trip.startDate, formatter)
+            val endDate = LocalDate.parse(trip.endDate, formatter)
+
+            val intent = Intent(Intent.ACTION_INSERT).apply {
+                data = CalendarContract.Events.CONTENT_URI
+
+                putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                    startDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
+
+                putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                    endDate.plusDays(1).atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli())
+
+                putExtra(CalendarContract.Events.TITLE, "${trip.location} 여행")
+                putExtra(CalendarContract.Events.DESCRIPTION,
+                    "목적지: ${trip.location}\n" +
+                            "여행 기간: ${trip.startDate} ~ ${trip.endDate}\n" +
+                            "날씨: ${trip.weather}")
+                putExtra(CalendarContract.Events.ALL_DAY, true)
+            }
+
+            context.startActivity(intent)
+        } catch (e: Exception) {
+            // 에러 무시
+        }
+    }
+}
+
 private fun getTripColor(index: Int): Color {
     val colors = listOf(
         Color(0xFF2196F3), // 파란색
